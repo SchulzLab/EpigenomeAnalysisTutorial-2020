@@ -22,7 +22,6 @@ We have created a ReadTheDocs documentation for the participants to setup the so
 
 # Schedule (1.9.2020)
 
-Timetable
 
 | Time        | Topic           | 
 | ------------- |:-------------:|
