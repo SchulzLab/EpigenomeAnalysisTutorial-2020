@@ -16,7 +16,7 @@ In order to prepare for the tutorial please do the following:
 
 
 # Documentation
-Previosuly we had made this very thorough ReadTheDocs, many parts of which we can reuse. We just need to create a new one, if we want to use that again.
+*Previously we had made this very thorough ReadTheDocs, many parts of which we can reuse. We just need to create a new one, if we want to use that again.*
 
 We have created a ReadTheDocs documentation for the participants to setup the software for the tutorial and for publishing the final working examples, accessible [here](http://epigenomicstutorial-ismb2017.readthedocs.io/en/latest/index.html).
 
