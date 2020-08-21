@@ -27,7 +27,7 @@ Next, we will use `HINT <http://www.regulatory-genomics.org/hint/>`_ to find gen
     awk '$1 ~ /^chr(1)$/' ./results/bwa/mergedReplicate/macs/narrowPeak/hESC.mRp.clN_peaks.narrowPeak > ./session1/results/hint_chr1/peaks/hESC.bed
     awk '$1 ~ /^chr(1)$/' ./results/bwa/mergedReplicate/macs/narrowPeak/Cardiac.mRp.clN_peaks.narrowPeak > ./session1/results/hint_chr1/peaks/Cardiac.bed
 
-**2.** Execute the following commands to call footprints for hESC and Cardiac cells:
+**3.** Execute the following commands to call footprints for hESC and Cardiac cells:
 ::
 
     mkdir -p ./session1/results/hint_chr1/footprints
@@ -36,7 +36,7 @@ Next, we will use `HINT <http://www.regulatory-genomics.org/hint/>`_ to find gen
 
 This will generate an output file, i.e  ``./session1/results/hint_chr1/footprints/hESC.bed``, containing the genomic locations of the footprints.  HINT also produces a file with ending ".info", which has general statistics from the analysis as no. of footprints, total number of reads and so on.
 
-We can use `IGV <http://software.broadinstitute.org/software/igv/>`_ to vizualise ATAC-seq signals and footprint predictions in particular loci. First, we can use a special HINT command to generate genomic profiles (bigWig files). 
+**4.** We can use `IGV <http://software.broadinstitute.org/software/igv/>`_ to vizualise ATAC-seq signals and footprint predictions in particular loci. First, we can use a special HINT command to generate genomic profiles (bigWig files).
 ::
     mkdir -p ./session1/results/hint_chr1/tracks
     rgt-hint tracks --bc --bigWig --organism=hg38 --output-location=${output_dir}/tracks --output-prefix=hESC ./results/bwa/mergedReplicate/hESC.mRp.clN.sorted.bam ${output_dir}/peaks/hESC.bed
