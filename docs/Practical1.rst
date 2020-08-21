@@ -69,4 +69,5 @@ Finally, we use HINT to generate average ATAC-seq profiles around MPBSs. This an
     rgt-hint differential --organism=hg38 --bc --nc 30 --mpbs-files=./session1/results/hint_chr1/motifmatching/hESC_mpbs.bed,./session1/results/hint_chr1/motifmatching/Cardiac_mpbs.bed --reads-files=./results/bwa/mergedReplicate/hESC.mRp.clN.sorted.bam,./results/bwa/mergedReplicate/Cardiac.mRp.clN.sorted.bam --conditions=hESC,Cardiac --output-location=./session1/results/hint_chr1/diff_footprints
 
 @ivan, select one or two factors for visualization
+
 The above commands will generate files with a ATAC-seq profile for each of the motifs founds in the provided mpbs bed files. Let's check the profiles in the comparison LSK and CD4, you will see that ELK4 has higher number of ATAC-seq counts in CD4 cells, while SPI1 has more ATAC-seq in LSK cells. Higher ATAC counts indicates higher activity of the factor in that particular cell. This fits with the results discussed in Lara-Astiaso that SPI1 are more relevant/active in LSK, while ELK4 in CD4 cells.
