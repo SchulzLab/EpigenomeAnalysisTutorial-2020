@@ -76,7 +76,7 @@ The 5th column contains the number of reads around predicted footprint and can b
     rgt-hint tracks --bc --bigWig --organism=hg38 --output-location=${output_dir}/tracks --output-prefix=hESC ./results/bwa/mergedReplicate/hESC.mRp.clN.sorted.bam ${output_dir}/peaks/hESC.bed
     rgt-hint tracks --bc --bigWig --organism=hg38 --output-location=${output_dir}/tracks --output-prefix=Cardiac ./results/bwa/mergedReplicate/Cardiac.mRp.clN.sorted.bam ${output_dir}/peaks/Cardiac.bed
     
- You can load the newly generated bigwig files and fooptrints with`IGV <http://software.broadinstitute.org/software/igv/>`_ together with the signals and peaks detected by nf-core. Are the bigwig files performed by nf-core and HINT comparable?  Check for example the genomic profiles around the genes GATA6 and POU5F1 again. 
+You can load the newly generated bigwig files and fooptrints with `IGV <http://software.broadinstitute.org/software/igv/>`_ together with the signals and peaks detected by nf-core. Are the bigwig files performed by nf-core and HINT comparable?  Check for example the genomic profiles around the genes GATA6 and POU5F1 again. 
 
 Step 3: TF binding site prediction
 -----------------------------------
