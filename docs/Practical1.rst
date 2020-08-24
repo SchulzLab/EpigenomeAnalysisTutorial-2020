@@ -25,7 +25,7 @@ IGV session for data vizualistaion: XXX
 
 You can take a look at QC statistics to check if atac-seq libraries have any quality issue. 
 
-You can use then `IGV <http://software.broadinstitute.org/software/igv/>`_ to vizualise ATAC-seq signals and peaks particular loci. Open the previously mentioned IGV session and take a look at cardiac related genes, i.e. Gata6, or stem cell related genes, i.e. Sox2. 
+You can use then `IGV <http://software.broadinstitute.org/software/igv/>`_ to vizualise ATAC-seq signals and peaks particular loci. Open the previously mentioned IGV session and take a look at cardiac related genes, i.e. GATA6, or stem cell related genes, i.e. POU5F1 (OCT4). 
 
 If you are interested in running nf-core at a latter stage, you can chekc the script `here <https://github.com/SchulzLab/EpigenomeAnalysisTutorial-2020/blob/master/session1/run.sh>`_.
 
@@ -68,7 +68,7 @@ This will generate an output file, i.e  ``./session1/results/hint_chr1/footprint
     rgt-hint tracks --bc --bigWig --organism=hg38 --output-location=${output_dir}/tracks --output-prefix=hESC ./results/bwa/mergedReplicate/hESC.mRp.clN.sorted.bam ${output_dir}/peaks/hESC.bed
     rgt-hint tracks --bc --bigWig --organism=hg38 --output-location=${output_dir}/tracks --output-prefix=Cardiac ./results/bwa/mergedReplicate/Cardiac.mRp.clN.sorted.bam ${output_dir}/peaks/Cardiac.bed
     
- You can load the newly generated bigwig files and fooptrints with`IGV <http://software.broadinstitute.org/software/igv/>`_ together with the signals and peaks detected by nf-core. Are the bigwig files performed by nf-core and HINT comparable?  Check for example the genomic profiles around the gene XXX. 
+ You can load the newly generated bigwig files and fooptrints with`IGV <http://software.broadinstitute.org/software/igv/>`_ together with the signals and peaks detected by nf-core. Are the bigwig files performed by nf-core and HINT comparable?  Check for example the genomic profiles around the genes GATA6 and POU5F1 again. 
 
 Step2: TF binding site prediction
 -----------------------------------
@@ -82,7 +82,7 @@ Execute the following commands to do motif matching inside footprints for chromo
 
 The above commands will generate bed files (i.e. Cardiac_mpbs.bed) containing MPBSs overlapping with distinct footprint regions. The 4th column contains the motif name and the 5th column the bit-score of the motif matching.
 
-Step3: Differential footprinting analysis
+Step3: Average footprint porifles and differential activity analysis
 -----------------------------------
 
 Finally, we use HINT to generate average ATAC-seq profiles around MPBSs. This analysis allows us to inspect the chromatin accessibility around the binding sites of a particular factor. Moreover, by comparing the profiles from two ATAC-seq libraries (i.s. hESC vs Cardiac cells), we can get insights on changes in transcription factors with increase in activity (or binding) in two cells. For this, execute the following commands:
@@ -92,5 +92,7 @@ Finally, we use HINT to generate average ATAC-seq profiles around MPBSs. This an
     rgt-hint differential --organism=hg38 --bc --nc 30 --mpbs-files=./session1/results/hint_chr1/motifmatching/hESC_mpbs.bed,./session1/results/hint_chr1/motifmatching/Cardiac_mpbs.bed --reads-files=./results/bwa/mergedReplicate/hESC.mRp.clN.sorted.bam,./results/bwa/mergedReplicate/Cardiac.mRp.clN.sorted.bam --conditions=hESC,Cardiac --output-location=./session1/results/hint_chr1/diff_footprints
 
 @ivan, select one or two factors for visualization
+
+You can inspect the table XXX to check TFs, which have a significant change in activity score. 
 
 The above commands will generate files with a ATAC-seq profile for each of the motifs founds in the provided mpbs bed files. Let's check the profiles in the comparison LSK and CD4, you will see that ELK4 has higher number of ATAC-seq counts in CD4 cells, while SPI1 has more ATAC-seq in LSK cells. Higher ATAC counts indicates higher activity of the factor in that particular cell. This fits with the results discussed in Lara-Astiaso that SPI1 are more relevant/active in LSK, while ELK4 in CD4 cells.
