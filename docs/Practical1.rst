@@ -101,7 +101,7 @@ Finally, we use HINT to generate average ATAC-seq profiles around MPBSs. This an
     
 The above command will 
 
-Step 5: Motif filtering based on whole genome analysis
+Step 5: Motif filtering
 --------------------------------------------------------------------------
 The above analyses are based on chromosome 1 and we provide here the results using all chromsomes. Results of the TF activity are provided in the table ``./session1/results/hint/diff_footprints/differential_statistics.txt`` . You can use the R script XXX to make a nice vizualisation. Note that this script only consider TFs with significant change in activity (p-value < 0.05) and at least 1.000 binding sites for TF.  This indicates that SOX .... 
 
