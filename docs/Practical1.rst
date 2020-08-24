@@ -49,7 +49,6 @@ We will only consider peaks inside chromosome 1 so that the whole analysis can b
 
 **1.** First, go to EpigenomeAnalysisTutorial-2020 and create a folder for results:
 ::
-    cd EpigenomeAnalysisTutorial-2020
     mkdir -p ./session1/results/hint_chr1
 
 **2.** Select peaks from chromosome 1 (this step is only performed to reduce computing time). 
@@ -65,12 +64,13 @@ We will only consider peaks inside chromosome 1 so that the whole analysis can b
     rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./session1/results/hint_chr1/footprints --output-prefix=hESC ./results/bwa/mergedReplicate/hESC.mRp.clN.sorted.bam ${output_dir}/peaks/hESC.bed
     rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./session1/results/hint_chr1/footprints --output-prefix=Cardiac ./results/bwa/mergedReplicate/Cardiac.mRp.clN.sorted.bam ${output_dir}/peaks/Cardiac.bed
 
-This will generate an output file, i.e  ``./session1/results/hint_chr1/footprints/hESC.bed``, containing the genomic locations of the footprints.  HINT also produces a file with ending ".info", which has general statistics from the analysis as no. of footprints, total number of reads and so on. You can use the head command to check the information contained in footprints.
+This will generate an output file, i.e  ``./session1/results/hint_chr1/footprints/hESC.bed``, containing the genomic locations of the footprints.  HINT also produces a file with ending ".info", which has general statistics from the analysis as no. of footprints, total number of reads and so on. You can use the head command to check the information contained in footprints:
+::
+    head ./session1/results/hint_chr1/footprints/hESC.bed
 
-@li, example of head? 
+The 5th column indicate the number of reads around predicted footprint and can be used as metric for filtering.
 
-**4.** HINT performs footprinting analysis by considering reads at each genomic position after signal normalization and cleveage bias correction. T. You need to perform an extra command to generate such signals. 
-
+**4.** HINT performs footprinting analysis by considering reads at each genomic position after signal normalization and cleveage bias correction. T. You need to perform an extra command to generate such signals:
 ::
     mkdir -p ./session1/results/hint_chr1/tracks
     rgt-hint tracks --bc --bigWig --organism=hg38 --output-location=${output_dir}/tracks --output-prefix=hESC ./results/bwa/mergedReplicate/hESC.mRp.clN.sorted.bam ${output_dir}/peaks/hESC.bed
@@ -90,10 +90,8 @@ Execute the following commands to do motif matching inside footprints for chromo
 
 The above commands will generate bed files (i.e. Cardiac_mpbs.bed) containing MPBSs overlapping with distinct footprint regions. The 4th column contains the motif name and the 5th column the bit-score of the motif matching.
 
-@li, example of head? 
-
 Step3: Average footprint porifles and differential activity analysis
------------------------------------
+----------------------------------------------------------------------------
 
 Finally, we use HINT to generate average ATAC-seq profiles around MPBSs. This analysis allows us to inspect the chromatin accessibility around the binding sites of a particular factor. Moreover, by comparing the profiles from two ATAC-seq libraries (i.s. hESC vs Cardiac cells), we can get insights on changes in transcription factors with increase in activity (or binding) in two cells. For this, execute the following commands:
 ::
