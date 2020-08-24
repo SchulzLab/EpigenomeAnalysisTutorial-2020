@@ -105,7 +105,9 @@ After the command is done, a pdf file **differential_statistics.pdf** will be cr
 
 Step 5: Motif filtering
 --------------------------------------------------------------------------
-The above analyses are based on chromosome 1 and we provide here the results using all chromsomes. Results of the TF activity are provided in the table ``./session1/results/hint/diff_footprints/differential_statistics.txt`` . You can use the R script XXX to make a nice vizualisation. Note that this script only consider TFs with significant change in activity (p-value < 0.05) and at least 1.000 binding sites for TF.  This indicates that SOX .... 
+As mentioned, the above analyses are based on chromosome 1 and the resutls might be biased, we therefore provide the complete results using all chromsomes in *./results/session1/hint*. The script for this analysis is found here `here <https://github.com/SchulzLab/EpigenomeAnalysisTutorial-2020/blob/master/session1/run_hint.sh>`_. 
+
+Results of the TF activity are provided in the table ``./session1/results/hint/diff_footprints/differential_statistics.txt`` . You can use the R script XXX to make a nice vizualisation. Note that this script only consider TFs with significant change in activity (p-value < 0.05) and at least 1.000 binding sites for TF.  This indicates that SOX .... 
 
 
 XXX - filter motif file (MA1104.2.GATA6 |MA0482.2.GATA4 and MA0142.1.Pou5f1::Sox2).
