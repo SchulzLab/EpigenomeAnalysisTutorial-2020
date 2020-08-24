@@ -148,8 +148,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (main_doc, 'EpiRegioDB.tex', 'EpiRegioDB Supplemental Material',
-     'Nina Baumgarten, Dennis Hecker, Sivarajan Karunanithi, and Marcel Schulz','manual'),
+    (main_doc, 'ECCB2020Tutorialdoc.tex', 'ECCB2020Tutorial Documentation',
+     'Zhijan Li, Nina Baumgarten, Dennis Hecker, Sivarajan Karunanithi, Ivan Costa and Marcel Schulz','manual'),
 ]
 
 latex_elements = {
@@ -161,7 +161,7 @@ latex_elements = {
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (main_doc, 'EpiRegioDB', 'EpiRegioDB Documentation',
+    (main_doc, 'ECCB2020Tutorialdoc', 'ECCB2020Tutorial Documentation',
      [author], 1)
 ]
 
@@ -172,7 +172,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (main_doc, 'EpiRegioDB', 'EpiRegioDB Supplemental Material',
-     author, 'EpiRegioDB', 'Analysis and retrieval of regulatory elements linked to genes with EpiRegio',
+    (main_doc, 'ECCB2020Tutorialdoc', 'ECCB2020Tutorialdoc',
+     author, 'ECCB2020Tutorialdoc', 'ECCB2020Tutorial Documentation',
      'Miscellaneous'),
 ]
