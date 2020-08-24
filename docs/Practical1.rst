@@ -28,10 +28,12 @@ You can use then `IGV <http://software.broadinstitute.org/software/igv/>`_ to vi
 
 The differential peaks file combined all peaks and here we can split it as hESC and Cardiac specific peaks by:
 ::
+    cd EpigenomeAnalysisTutorial-2020
+    mkdir -p ./session1/results/diff_peaks
+    awk '{if ($5 < 0) print $0}' session1/preprocessing/results/bwa/mergedReplicate/macs/narrowPeak/consensus/deseq2/CardiacvshESC/CardiacvshESC.mRp.clN.deseq2.FDR0.05.results.bed > hESC.bed
+    awk '{if ($5 > 0) print $0}' session1/preprocessing/results/bwa/mergedReplicate/macs/narrowPeak/consensus/deseq2/CardiacvshESC/CardiacvshESC.mRp.clN.deseq2.FDR0.05.results.bed > Cardiac.bed
     
-
-checking fold change in 4th column:
-
+The above commands will check the sign in 5th column and output as hESC specific peak if it is negative and Cardiac if positive.
 
 If you are interested in running nf-core at a latter stage, you can chekc the script `here <https://github.com/SchulzLab/EpigenomeAnalysisTutorial-2020/blob/master/session1/run_nf_core_atacseq.sh>`_.
 
