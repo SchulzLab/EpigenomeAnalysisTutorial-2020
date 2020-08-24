@@ -19,6 +19,8 @@ Among other things, the pipeline will generate important files, which will be us
 quality check statistics: XXX
 algiment files: XXX
 peak calling results: XXX
+bigwig files: XXX
+differential peak calling results: XXX
 IGV session for data vizualistaion: XXX 
 
 @li, include location of relevant files 
@@ -26,6 +28,8 @@ IGV session for data vizualistaion: XXX
 You can take a look at QC statistics to check if atac-seq libraries have any quality issue. 
 
 You can use then `IGV <http://software.broadinstitute.org/software/igv/>`_ to vizualise ATAC-seq signals and peaks particular loci. Open the previously mentioned IGV session and take a look at cardiac related genes, i.e. GATA6, or stem cell related genes, i.e. POU5F1 (OCT4). 
+
+@li, include how to split the differential peak calling. 
 
 If you are interested in running nf-core at a latter stage, you can chekc the script `here <https://github.com/SchulzLab/EpigenomeAnalysisTutorial-2020/blob/master/session1/run.sh>`_.
 
@@ -82,6 +86,8 @@ Execute the following commands to do motif matching inside footprints for chromo
 
 The above commands will generate bed files (i.e. Cardiac_mpbs.bed) containing MPBSs overlapping with distinct footprint regions. The 4th column contains the motif name and the 5th column the bit-score of the motif matching.
 
+@li, example of head? 
+
 Step3: Average footprint porifles and differential activity analysis
 -----------------------------------
 
@@ -90,9 +96,10 @@ Finally, we use HINT to generate average ATAC-seq profiles around MPBSs. This an
 
     mkdir -p ./session1/results/hint_chr1/diff_footprints
     rgt-hint differential --organism=hg38 --bc --nc 30 --mpbs-files=./session1/results/hint_chr1/motifmatching/hESC_mpbs.bed,./session1/results/hint_chr1/motifmatching/Cardiac_mpbs.bed --reads-files=./results/bwa/mergedReplicate/hESC.mRp.clN.sorted.bam,./results/bwa/mergedReplicate/Cardiac.mRp.clN.sorted.bam --conditions=hESC,Cardiac --output-location=./session1/results/hint_chr1/diff_footprints
+    
+    
+Results of the TF activity are provided in the table XXX. You can use the R script XXX to make a nice vizualisation. Note that this script only consider TFs with significant change in activity (p-value < 0.05) and at least 1.000 binding sites for TF.  This indicates that SOX .... 
 
-@ivan, select one or two factors for visualization
+XXX - filter motif file (MA1104.2.GATA6 |MA0482.2.GATA4 and MA0142.1.Pou5f1::Sox2).
 
-You can inspect the table XXX to check TFs, which have a significant change in activity score. 
-
-The above commands will generate files with a ATAC-seq profile for each of the motifs founds in the provided mpbs bed files. Let's check the profiles in the comparison LSK and CD4, you will see that ELK4 has higher number of ATAC-seq counts in CD4 cells, while SPI1 has more ATAC-seq in LSK cells. Higher ATAC counts indicates higher activity of the factor in that particular cell. This fits with the results discussed in Lara-Astiaso that SPI1 are more relevant/active in LSK, while ELK4 in CD4 cells.
+- open bed files in IGV and look at their location. 
