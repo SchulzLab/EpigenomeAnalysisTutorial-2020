@@ -30,8 +30,8 @@ The differential peaks file combined all peaks and here we can split it as hESC 
 ::
     cd EpigenomeAnalysisTutorial-2020
     mkdir -p ./results/session1/diff_peaks
-    awk '{if ($5 < 0) print $0}' ~/EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/macs/narrowPeak/consensus/deseq2/CardiacvshESC/CardiacvshESC.mRp.clN.deseq2.FDR0.05.results.bed > ./results/session1/diff_peaks/hESC.bed
-    awk '{if ($5 > 0) print $0}' ~/EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/macs/narrowPeak/consensus/deseq2/CardiacvshESC/CardiacvshESC.mRp.clN.deseq2.FDR0.05.results.bed > ./results/session1/diff_peaks/Cardiac.bed
+    awk '{if ($5 < 0) print $0}' ./data/nf_core_atacseq/macs/narrowPeak/consensus/deseq2/CardiacvshESC/CardiacvshESC.mRp.clN.deseq2.FDR0.05.results.bed > ./results/session1/diff_peaks/hESC.bed
+    awk '{if ($5 > 0) print $0}' ./data/nf_core_atacseq/macs/narrowPeak/consensus/deseq2/CardiacvshESC/CardiacvshESC.mRp.clN.deseq2.FDR0.05.results.bed > ./results/session1/diff_peaks/Cardiac.bed
     
 The above commands will check the sign in 5th column and output as hESC specific peak if it is negative and Cardiac if positive.
 
