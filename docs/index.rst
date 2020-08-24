@@ -18,4 +18,5 @@ Contents:
    Installation.rst
    Practical1.rst
    Practical2.rst
+   Practical3.rst
 
