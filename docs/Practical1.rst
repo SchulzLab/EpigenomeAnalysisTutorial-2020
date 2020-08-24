@@ -15,12 +15,12 @@ A first step in the analysis of ATAC-seq data are the so callled low level analy
 
 Among other things, the pipeline will generate important files, which will be used during this tutorial: 
 
-- quality check statistics: *~/EpigenomeAnalysisTutorial-2020/data/session1/nf_core_atacseq/multiqc/narrowPeak/multiqc_report.html*
-- alignment files: */data/session1/nf_core_atacseq/*
-- genomic profiles (big wig): */data/session1/nf_core_atacseq/bigwig*
-- peak calling results: */data/session1/nf_core_atacseq/macs/narrowPeak*
-- differential peak calling results: */data/session1/nf_core_atacseq/macs/narrowPeak/consensus/deseq2/CardiacvshESC/*
-- IGV session for data vizualistaion: */data/session1/nf_core_atacseq/igv* 
+- quality check statistics: *~/EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/multiqc/narrowPeak/multiqc_report.html*
+- alignment files: *~/EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/*
+- genomic profiles (big wig): *~/EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/bigwig*
+- peak calling results: *~/EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/macs/narrowPeak*
+- differential peak calling results: *~/EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/macs/narrowPeak/consensus/deseq2/CardiacvshESC/*
+- IGV session for data vizualistaion: *~/EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/igv* 
 
 You can take a look at QC statistics to check if atac-seq libraries have any quality issue after trimming procedure. 
 
