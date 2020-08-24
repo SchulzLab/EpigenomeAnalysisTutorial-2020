@@ -68,7 +68,7 @@ This will generate an output file, i.e  ``./session1/results/hint_chr1/footprint
 ::
     head ./session1/results/hint_chr1/footprints/hESC.bed
 
-The 5th column indicate the number of reads around predicted footprint and can be used as metric for filtering.
+The 5th column contains the number of reads around predicted footprint and can be used as metric for filtering.
 
 **4.** HINT performs footprinting analysis by considering reads at each genomic position after signal normalization and cleveage bias correction. T. You need to perform an extra command to generate such signals:
 ::
@@ -78,7 +78,7 @@ The 5th column indicate the number of reads around predicted footprint and can b
     
  You can load the newly generated bigwig files and fooptrints with`IGV <http://software.broadinstitute.org/software/igv/>`_ together with the signals and peaks detected by nf-core. Are the bigwig files performed by nf-core and HINT comparable?  Check for example the genomic profiles around the genes GATA6 and POU5F1 again. 
 
-Step2: TF binding site prediction
+Step 3: TF binding site prediction
 -----------------------------------
 
 An important question when doing footprint analysis is to evaluate which TF motifs overlap with footprints and evaluate the ATAC-seq profiles around these motifs. RGT suite also offers a tool for finding motif predicted binding sites (MPBSs).
@@ -90,7 +90,7 @@ Execute the following commands to do motif matching inside footprints for chromo
 
 The above commands will generate bed files (i.e. Cardiac_mpbs.bed) containing MPBSs overlapping with distinct footprint regions. The 4th column contains the motif name and the 5th column the bit-score of the motif matching.
 
-Step3: Average footprint porifles and differential activity analysis
+Step 4: Average footprint porifles and differential activity analysis
 ----------------------------------------------------------------------------
 
 Finally, we use HINT to generate average ATAC-seq profiles around MPBSs. This analysis allows us to inspect the chromatin accessibility around the binding sites of a particular factor. Moreover, by comparing the profiles from two ATAC-seq libraries (i.s. hESC vs Cardiac cells), we can get insights on changes in transcription factors with increase in activity (or binding) in two cells. For this, execute the following commands:
@@ -98,7 +98,6 @@ Finally, we use HINT to generate average ATAC-seq profiles around MPBSs. This an
 
     mkdir -p ./session1/results/hint_chr1/diff_footprints
     rgt-hint differential --organism=hg38 --bc --nc 30 --mpbs-files=./session1/results/hint_chr1/motifmatching/hESC_mpbs.bed,./session1/results/hint_chr1/motifmatching/Cardiac_mpbs.bed --reads-files=./results/bwa/mergedReplicate/hESC.mRp.clN.sorted.bam,./results/bwa/mergedReplicate/Cardiac.mRp.clN.sorted.bam --conditions=hESC,Cardiac --output-location=./session1/results/hint_chr1/diff_footprints
-    
     
 Results of the TF activity are provided in the table XXX. You can use the R script XXX to make a nice vizualisation. Note that this script only consider TFs with significant change in activity (p-value < 0.05) and at least 1.000 binding sites for TF.  This indicates that SOX .... 
 
