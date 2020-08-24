@@ -6,23 +6,21 @@ In the first practical, we will perform footprint analysis and motif matching wi
 
 Example data 
 -----------------------------------------------
-We will analyse here chromatin (ATAC-seq) and gene expression data during human mesoderm development from `_Koh PW et al 2016 <https://pubmed.ncbi.nlm.nih.gov/27996962/#&gid=article-figures&pid=figure-1-uid-0>`_. Here, we will focus on regulatory changes between hESC cells and Cardiac mesoderm cells, which were performed in biological duplicates. 
+We will analyse here chromatin (ATAC-seq) and gene expression data during human mesoderm development from `Koh PW et al 2016 <https://pubmed.ncbi.nlm.nih.gov/27996962/#&gid=article-figures&pid=figure-1-uid-0>`_. Here, we will focus on regulatory changes between hESC cells and Cardiac mesoderm cells, which were performed in biological duplicates. 
 
 
 Step 1: Quality check, aligment and peak calling of ATAC-seq data
 -----------------------------------------------
 A first step in the analysis of ATAC-seq data are the so callled low levels steps including quality check analysis, aligment and peak calling. We have used for this the `nfcore/atacseq <https://github.com/nf-core/atacseq>`_, a rather complete and simple to use pipeline for ATAC-seq data. Due to the computational time to run such pipeline, we have pre-computed results and we provide all important files under */data/session1/nf_core_atacseq*.
 
-Among other things, the pipeline will generate important files, which will be used during this tutorial. 
+Among other things, the pipeline will generate important files, which will be used during this tutorial: 
 
-quality check statistics: XXX
-algiment files: XXX
-peak calling results: XXX
-bigwig files: XXX
-differential peak calling results: XXX
-IGV session for data vizualistaion: XXX 
-
-@li, include location of relevant files 
+- quality check statistics: */data/session1/nf_core_atacseq*
+- algiment files: */data/session1/nf_core_atacseq*
+- peak calling results: */data/session1/nf_core_atacseq*
+- bigwig files: */data/session1/nf_core_atacseq*
+- differential peak calling results: */data/session1/nf_core_atacseq*
+- IGV session for data vizualistaion: */data/session1/nf_core_atacseq* 
 
 You can take a look at QC statistics to check if atac-seq libraries have any quality issue. 
 
