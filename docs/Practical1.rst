@@ -99,7 +99,12 @@ Finally, we use HINT to generate average ATAC-seq profiles around MPBSs. This an
     mkdir -p ./session1/results/hint_chr1/diff_footprints
     rgt-hint differential --organism=hg38 --bc --nc 30 --mpbs-files=./session1/results/hint_chr1/motifmatching/hESC_mpbs.bed,./session1/results/hint_chr1/motifmatching/Cardiac_mpbs.bed --reads-files=./results/bwa/mergedReplicate/hESC.mRp.clN.sorted.bam,./results/bwa/mergedReplicate/Cardiac.mRp.clN.sorted.bam --conditions=hESC,Cardiac --output-location=./session1/results/hint_chr1/diff_footprints
     
-Results of the TF activity are provided in the table ``./session1/results/hint_chr1/diff_footprints/differential_statistics.txt`` . You can use the R script XXX to make a nice vizualisation. Note that this script only consider TFs with significant change in activity (p-value < 0.05) and at least 1.000 binding sites for TF.  This indicates that SOX .... 
+The above command will 
+
+Step 5: Motif filtering based on whole genome analysis
+--------------------------------------------------------------------------
+The above analyses are based on chromosome 1 and we provide here the results using all chromsomes. Results of the TF activity are provided in the table ``./session1/results/hint/diff_footprints/differential_statistics.txt`` . You can use the R script XXX to make a nice vizualisation. Note that this script only consider TFs with significant change in activity (p-value < 0.05) and at least 1.000 binding sites for TF.  This indicates that SOX .... 
+
 
 XXX - filter motif file (MA1104.2.GATA6 |MA0482.2.GATA4 and MA0142.1.Pou5f1::Sox2).
 
