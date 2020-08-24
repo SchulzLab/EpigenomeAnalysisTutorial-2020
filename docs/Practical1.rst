@@ -29,9 +29,9 @@ You can use then `IGV <http://software.broadinstitute.org/software/igv/>`_ to vi
 The differential peaks file combined all peaks and here we can split it as hESC and Cardiac specific peaks by:
 ::
     cd EpigenomeAnalysisTutorial-2020
-    mkdir -p ./session1/results/diff_peaks
-    awk '{if ($5 < 0) print $0}' session1/preprocessing/results/bwa/mergedReplicate/macs/narrowPeak/consensus/deseq2/CardiacvshESC/CardiacvshESC.mRp.clN.deseq2.FDR0.05.results.bed > hESC.bed
-    awk '{if ($5 > 0) print $0}' session1/preprocessing/results/bwa/mergedReplicate/macs/narrowPeak/consensus/deseq2/CardiacvshESC/CardiacvshESC.mRp.clN.deseq2.FDR0.05.results.bed > Cardiac.bed
+    mkdir -p ./results/session1/diff_peaks
+    awk '{if ($5 < 0) print $0}' ~/EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/macs/narrowPeak/consensus/deseq2/CardiacvshESC/CardiacvshESC.mRp.clN.deseq2.FDR0.05.results.bed > ./results/session1/diff_peaks/hESC.bed
+    awk '{if ($5 > 0) print $0}' ~/EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/macs/narrowPeak/consensus/deseq2/CardiacvshESC/CardiacvshESC.mRp.clN.deseq2.FDR0.05.results.bed > ./results/session1/diff_peaks/Cardiac.bed
     
 The above commands will check the sign in 5th column and output as hESC specific peak if it is negative and Cardiac if positive.
 
@@ -49,20 +49,20 @@ We will only consider peaks inside chromosome 1 so that the whole analysis can b
 
 **1.** First, go to EpigenomeAnalysisTutorial-2020 and create a folder for results:
 ::
-    mkdir -p ./session1/results/hint_chr1
+    mkdir -p ./results/session1/hint_chr1
 
 **2.** Select peaks from chromosome 1 (this step is only performed to reduce computing time). 
 ::
     mkdir -p ./session1/results/hint_chr1/peaks
-    awk '$1 ~ /^chr(1)$/' ~/data/nf_core_atacseq/macs/narrowPeak/hESC.mRp.clN_peaks.narrowPeak > ./session1/results/hint_chr1/peaks/hESC.bed
-    awk '$1 ~ /^chr(1)$/' ~/data/nf_core_atacseq/macs/narrowPeak/Cardiac.mRp.clN_peaks.narrowPeak > ./session1/results/hint_chr1/peaks/Cardiac.bed
+    awk '$1 ~ /^chr(1)$/' ./data/nf_core_atacseq/macs/narrowPeak/hESC.mRp.clN_peaks.narrowPeak > ./session1/results/hint_chr1/peaks/hESC.bed
+    awk '$1 ~ /^chr(1)$/' ./data/nf_core_atacseq/macs/narrowPeak/Cardiac.mRp.clN_peaks.narrowPeak > ./session1/results/hint_chr1/peaks/Cardiac.bed
 
 **3.** Finally, we can execute HINT twice to find footprints specific to hESC and cardiac cells. This can be done as:
 ::
 
     mkdir -p ./session1/results/hint_chr1/footprints
-    rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./session1/results/hint_chr1/footprints --output-prefix=hESC ~/data/nf_core_atacseq/hESC.mRp.clN.sorted.bam ${output_dir}/peaks/hESC.bed
-    rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./session1/results/hint_chr1/footprints --output-prefix=Cardiac ~/data/nf_core_atacseq/Cardiac.mRp.clN.sorted.bam ${output_dir}/peaks/Cardiac.bed
+    rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./session1/results/hint_chr1/footprints --output-prefix=hESC ./data/nf_core_atacseq/hESC.mRp.clN.sorted.bam ${output_dir}/peaks/hESC.bed
+    rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./session1/results/hint_chr1/footprints --output-prefix=Cardiac ./data/nf_core_atacseq/Cardiac.mRp.clN.sorted.bam ${output_dir}/peaks/Cardiac.bed
 
 This will generate an output file, i.e  ``./session1/results/hint_chr1/footprints/hESC.bed``, containing the genomic locations of the footprints.  HINT also produces a file with ending ".info", which has general statistics from the analysis as no. of footprints, total number of reads and so on. You can use the head command to check the information contained in footprints:
 ::
