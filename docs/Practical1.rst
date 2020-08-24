@@ -53,28 +53,28 @@ We will only consider peaks inside chromosome 1 so that the whole analysis can b
 
 **2.** Select peaks from chromosome 1 (this step is only performed to reduce computing time). 
 ::
-    mkdir -p ./session1/results/hint_chr1/peaks
-    awk '$1 ~ /^chr(1)$/' ./data/nf_core_atacseq/macs/narrowPeak/hESC.mRp.clN_peaks.narrowPeak > ./session1/results/hint_chr1/peaks/hESC.bed
-    awk '$1 ~ /^chr(1)$/' ./data/nf_core_atacseq/macs/narrowPeak/Cardiac.mRp.clN_peaks.narrowPeak > ./session1/results/hint_chr1/peaks/Cardiac.bed
+    mkdir -p ./results/session1/hint_chr1/peaks
+    awk '$1 ~ /^chr(1)$/' ./data/nf_core_atacseq/macs/narrowPeak/hESC.mRp.clN_peaks.narrowPeak > ./results/session1/hint_chr1/peaks/hESC.bed
+    awk '$1 ~ /^chr(1)$/' ./data/nf_core_atacseq/macs/narrowPeak/Cardiac.mRp.clN_peaks.narrowPeak > ./results/session1/hint_chr1/peaks/Cardiac.bed
 
 **3.** Finally, we can execute HINT twice to find footprints specific to hESC and cardiac cells. This can be done as:
 ::
 
-    mkdir -p ./session1/results/hint_chr1/footprints
-    rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./session1/results/hint_chr1/footprints --output-prefix=hESC ./data/nf_core_atacseq/hESC.mRp.clN.sorted.bam ${output_dir}/peaks/hESC.bed
-    rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./session1/results/hint_chr1/footprints --output-prefix=Cardiac ./data/nf_core_atacseq/Cardiac.mRp.clN.sorted.bam ${output_dir}/peaks/Cardiac.bed
+    mkdir -p ./results/session1/hint_chr1/footprints
+    rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./results/session1/hint_chr1/footprints --output-prefix=hESC ./data/nf_core_atacseq/hESC.mRp.clN.sorted.bam ./data/nf_core_atacseq/peaks/hESC.bed
+    rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./results/session1/hint_chr1/footprints --output-prefix=Cardiac ./data/nf_core_atacseq/Cardiac.mRp.clN.sorted.bam ./data/nf_core_atacseq/peaks/Cardiac.bed
 
-This will generate an output file, i.e  ``./session1/results/hint_chr1/footprints/hESC.bed``, containing the genomic locations of the footprints.  HINT also produces a file with ending ".info", which has general statistics from the analysis as no. of footprints, total number of reads and so on. You can use the head command to check the information contained in footprints:
+This will generate an output file, i.e  ``./results/session1/hint_chr1/footprints/hESC.bed``, containing the genomic locations of the footprints.  HINT also produces a file with ending ".info", which has general statistics from the analysis as no. of footprints, total number of reads and so on. You can use the head command to check the information contained in footprints:
 ::
-    head ./session1/results/hint_chr1/footprints/hESC.bed
+    head ./results/session1/hint_chr1/footprints/hESC.bed
 
 The 5th column contains the number of reads around predicted footprint and can be used as metric for filtering, i.e. the more reads the more likelly the footprint is associated to an active binding site. 
 
 **4.** HINT performs footprinting analysis by considering reads at each genomic position after signal normalization and cleveage bias correction.  You need to perform an extra command to generate such signals in order to vizualise this is a genome browser:
 ::
-    mkdir -p ./session1/results/hint_chr1/tracks
-    rgt-hint tracks --bc --bigWig --organism=hg38 --output-location=${output_dir}/tracks --output-prefix=hESC ./results/bwa/mergedReplicate/hESC.mRp.clN.sorted.bam ${output_dir}/peaks/hESC.bed
-    rgt-hint tracks --bc --bigWig --organism=hg38 --output-location=${output_dir}/tracks --output-prefix=Cardiac ./results/bwa/mergedReplicate/Cardiac.mRp.clN.sorted.bam ${output_dir}/peaks/Cardiac.bed
+    mkdir -p ./results/session1/hint_chr1/tracks
+    rgt-hint tracks --bc --bigWig --organism=hg38 --output-location=./results/session1/hint_chr1/tracks --output-prefix=hESC ./data/nf_core_atacseq/hESC.mRp.clN.sorted.bam ./results/session1/hint_chr1/peaks/hESC.bed
+    rgt-hint tracks --bc --bigWig --organism=hg38 --output-location=./results/session1/hint_chr1/tracks --output-prefix=Cardiac ./data/nf_core_atacseq/Cardiac.mRp.clN.sorted.bam ./results/session1/hint_chr1/peaks/Cardiac.bed
     
 You can load the newly generated bigwig files and fooptrints with `IGV <http://software.broadinstitute.org/software/igv/>`_ together with the signals and peaks detected by nf-core. Are the bigwig files performed by nf-core and HINT the same? Check for example the genomic profiles around the genes GATA6 and POU5F1 again. 
 
@@ -85,8 +85,8 @@ An important question when doing footprint analysis is to evaluate which TF moti
 
 Execute the following commands to do motif matching inside footprints for chromosome 1:
 ::
-    mkdir -p ./session1/results/hint_chr1/motifmatching
-    rgt-motifanalysis matching --organism=hg38 --output-location=./session1/results/hint_chr1/motifmatching --input-files ${output_dir}/footprints/hESC.bed ${output_dir}/footprints/Cardiac.bed
+    mkdir -p ./results/session1/hint_chr1/motifmatching
+    rgt-motifanalysis matching --organism=hg38 --output-location=./results/session1/hint_chr1/motifmatching --input-files ./results/session1/hint_chr1/footprints/hESC.bed ./results/session1/hint_chr1/footprints/Cardiac.bed
 
 The above commands will generate bed files (i.e. Cardiac_mpbs.bed) containing MPBSs overlapping with distinct footprint regions. The 4th column contains the motif name and the 5th column the bit-score of the motif matching. Higher bit-score indicates higher agreement of the motif with the DNA sequence. 
 
@@ -96,8 +96,8 @@ Step 4: Average footprint porifles and differential activity analysis
 Finally, we use HINT to generate average ATAC-seq profiles around MPBSs. This analysis allows us to inspect the chromatin accessibility around the binding sites of a particular factor and indicates the TF activitiy, i.e. higher accessibility and clear footprints indicates higher TF activity. Moreover, by comparing the profiles from two ATAC-seq libraries (i.s. hESC vs Cardiac cells), we can get insights on changes in transcription factors with increase in activity (or binding) in two cells. For this, execute the following commands:
 ::
 
-    mkdir -p ./session1/results/hint_chr1/diff_footprints
-    rgt-hint differential --organism=hg38 --bc --nc 30 --mpbs-files=./session1/results/hint_chr1/motifmatching/hESC_mpbs.bed,./session1/results/hint_chr1/motifmatching/Cardiac_mpbs.bed --reads-files=./results/bwa/mergedReplicate/hESC.mRp.clN.sorted.bam,./results/bwa/mergedReplicate/Cardiac.mRp.clN.sorted.bam --conditions=hESC,Cardiac --output-location=./session1/results/hint_chr1/diff_footprints
+    mkdir -p ./results/session1/hint_chr1/diff_footprints
+    rgt-hint differential --organism=hg38 --bc --nc 30 --mpbs-files=./results/session1/hint_chr1/motifmatching/hESC_mpbs.bed,./results/session1/hint_chr1/motifmatching/Cardiac_mpbs.bed --reads-files=./data/nf_core_atacseq/hESC.mRp.clN.sorted.bam,./data/nf_core_atacseq/Cardiac.mRp.clN.sorted.bam --conditions=hESC,Cardiac --output-location=./results/session1/hint_chr1/diff_footprints
     
 The above command will 
 
