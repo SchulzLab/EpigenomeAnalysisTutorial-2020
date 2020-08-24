@@ -6,8 +6,7 @@ In the first practical, we will perform footprint analysis and motif matching wi
 
 Example data 
 -----------------------------------------------
-We will analyse here chromatin (ATAC-seq) and gene expression data during human mesoderm development from `_Koh PW et al 2016 <
-https://pubmed.ncbi.nlm.nih.gov/27996962/#&gid=article-figures&pid=figure-1-uid-0>`_. Here, we will focus on regulatory changes between hESC cells and Cardiac mesoderm cells, which were performed in biological duplicates. 
+We will analyse here chromatin (ATAC-seq) and gene expression data during human mesoderm development from `_Koh PW et al 2016 <https://pubmed.ncbi.nlm.nih.gov/27996962/#&gid=article-figures&pid=figure-1-uid-0>`_. Here, we will focus on regulatory changes between hESC cells and Cardiac mesoderm cells, which were performed in biological duplicates. 
 
 
 Step 1: Quality check, aligment and peak calling of ATAC-seq data
