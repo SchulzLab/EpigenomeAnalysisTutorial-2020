@@ -19,14 +19,19 @@ Among other things, the pipeline will generate important files, which will be us
 - algiment files: */data/session1/nf_core_atacseq/*
 - peak calling results: */data/session1/nf_core_atacseq/macs/narrowPeak*
 - bigwig files: */data/session1/nf_core_atacseq/bigwig*
-- differential peak calling results: */data/session1/nf_core_atacseq/macs/narrowPeak/consensus/deseq2*
+- differential peak calling results: */data/session1/nf_core_atacseq/macs/narrowPeak/consensus/deseq2/CardiacvshESC/*
 - IGV session for data vizualistaion: */data/session1/nf_core_atacseq/igv* 
 
 You can take a look at QC statistics to check if atac-seq libraries have any quality issue. 
 
 You can use then `IGV <http://software.broadinstitute.org/software/igv/>`_ to vizualise ATAC-seq signals and peaks particular loci. Open the previously mentioned IGV session and take a look at cardiac related genes, i.e. GATA6, or stem cell related genes, i.e. POU5F1 (OCT4). 
 
-@li, include how to split the differential peak calling. 
+The differential peaks file combined all peaks and here we can split it as hESC and Cardiac specific peaks by:
+::
+    
+
+checking fold change in 4th column:
+
 
 If you are interested in running nf-core at a latter stage, you can chekc the script `here <https://github.com/SchulzLab/EpigenomeAnalysisTutorial-2020/blob/master/session1/run_nf_core_atacseq.sh>`_.
 
