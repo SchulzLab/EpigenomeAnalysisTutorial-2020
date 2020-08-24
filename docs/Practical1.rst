@@ -15,12 +15,12 @@ A first step in the analysis of ATAC-seq data are the so callled low levels step
 
 Among other things, the pipeline will generate important files, which will be used during this tutorial: 
 
-- quality check statistics: */data/session1/nf_core_atacseq*
-- algiment files: */data/session1/nf_core_atacseq*
-- peak calling results: */data/session1/nf_core_atacseq*
-- bigwig files: */data/session1/nf_core_atacseq*
-- differential peak calling results: */data/session1/nf_core_atacseq*
-- IGV session for data vizualistaion: */data/session1/nf_core_atacseq* 
+- quality check statistics: */data/session1/nf_core_atacseq/multiqc/narrowPeak/multiqc_report.html*
+- algiment files: */data/session1/nf_core_atacseq/*
+- peak calling results: */data/session1/nf_core_atacseq/macs/narrowPeak*
+- bigwig files: */data/session1/nf_core_atacseq/bigwig*
+- differential peak calling results: */data/session1/nf_core_atacseq/macs/narrowPeak/consensus/deseq2*
+- IGV session for data vizualistaion: */data/session1/nf_core_atacseq/igv* 
 
 You can take a look at QC statistics to check if atac-seq libraries have any quality issue. 
 
