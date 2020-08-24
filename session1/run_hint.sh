@@ -11,33 +11,34 @@ source ~/.zshrc
 conda activate nf-core-atacseq-1.2.1
 
 ## only use chr1-22 and chrX for downstream analysis
-mkdir -p ./results/hint/peaks
-awk '$1 ~ /^chr(1?[0-9]|2[0-2]|X)$/' ./results/bwa/mergedReplicate/macs/narrowPeak/hESC.mRp.clN_peaks.narrowPeak > ./results/hint/peaks/hESC.bed
+mkdir -p ./results/session1/hint/peaks
+awk '$1 ~ /^chr(1?[0-9]|2[0-2]|X)$/' ./data/nf_core_atacseq/macs/narrowPeak/hESC.mRp.clN_peaks.narrowPeak > ./results/session1/hint/peaks/hESC.bed
 
-awk '$1 ~ /^chr(1?[0-9]|2[0-2]|X)$/' ./results/bwa/mergedReplicate/macs/narrowPeak/Cardiac.mRp.clN_peaks.narrowPeak > ./results/hint/peaks/Cardiac.bed
+awk '$1 ~ /^chr(1?[0-9]|2[0-2]|X)$/' ./data/nf_core_atacseq/macs/narrowPeak/Cardiac.mRp.clN_peaks.narrowPeak > ./results/session1/hint/peaks/Cardiac.bed
 
-mkdir -p ./results/hint/footprints
+mkdir -p ./results/session1/hint/footprints
 
-rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./results/hint/footprints \
---output-prefix=hESC ./results/bwa/mergedReplicate/hESC.mRp.clN.sorted.bam ./results/hint/peaks/hESC.bed
+rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./results/session1/hint/footprints \
+--output-prefix=hESC ./data/nf_core_atacseq/hESC.mRp.clN.sorted.bam ./results/session1/hint/peaks/hESC.bed
 
-rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./results/hint/footprints \
---output-prefix=Cardiac ./results/bwa/mergedReplicate/Cardiac.mRp.clN.sorted.bam ./results/hint/peaks/Cardiac.bed
+rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./results/session1/hint/footprints \
+--output-prefix=Cardiac ./data/nf_core_atacseq/Cardiac.mRp.clN.sorted.bam ./results/session1/hint/peaks/Cardiac.bed
 
-mkdir -p ./results/hint/tracks
+mkdir -p ./results/session1/hint/tracks
 
-rgt-hint tracks --bc --bigWig --organism=hg38 --output-location=./results/hint/tracks --output-prefix=hESC \
-./results/bwa/mergedReplicate/hESC.mRp.clN.sorted.bam ./results/hint/peaks/hESC.bed
+rgt-hint tracks --bc --bigWig --organism=hg38 --output-location=./results/session1/hint/tracks --output-prefix=hESC \
+./data/nf_core_atacseq/hESC.mRp.clN.sorted.bam ./results/session1/hint/peaks/hESC.bed
 
-rgt-hint tracks --bc --bigWig --organism=hg38 --output-location=./results/hint/tracks --output-prefix=Cardiac \
-./results/bwa/mergedReplicate/Cardiac.mRp.clN.sorted.bam ./results/hint/peaks/Cardiac.bed
+rgt-hint tracks --bc --bigWig --organism=hg38 --output-location=./results/session1/hint/tracks --output-prefix=Cardiac \
+./data/nf_core_atacseq/Cardiac.mRp.clN.sorted.bam ./results/session1/hint/peaks/Cardiac.bed
 
-mkdir -p ./results/hint/motifmatching
+mkdir -p ./results/session1/hint/motifmatching
 
-rgt-motifanalysis matching --organism=hg38 --output-location=./results/hint/motifmatching --input-files ./results/hint/footprints/hESC.bed ./results/hint/footprints/Cardiac.bed
+rgt-motifanalysis matching --organism=hg38 --output-location=./results/session1/hint/motifmatching --input-files ./results/session1/hint/footprints/hESC.bed ./results/session1/hint/footprints/Cardiac.bed
 
 
-mkdir -p ./results/hint/diff_footprints
-rgt-hint differential --organism=hg38 --bc --nc 30 --mpbs-files=./results/hint/motifmatching/hESC_mpbs.bed,./results/hint/motifmatching/Cardiac_mpbs.bed \
---reads-files=./results/bwa/mergedReplicate/hESC.mRp.clN.sorted.bam,./results/bwa/mergedReplicate/Cardiac.mRp.clN.sorted.bam \
---conditions=hESC,Cardiac --output-location=./results/hint/diff_footprints
+mkdir -p ./results/session1/hint/diff_footprints
+
+rgt-hint differential --organism=hg38 --bc --nc 30 --mpbs-files=./results/session1/hint/motifmatching/hESC_mpbs.bed,./results/session1/hint/motifmatching/Cardiac_mpbs.bed \
+--reads-files=./data/nf_core_atacseq/hESC.mRp.clN.sorted.bam,./data/nf_core_atacseq/Cardiac.mRp.clN.sorted.bam \
+--conditions=hESC,Cardiac --output-location=./results/session1/hint/diff_footprints
