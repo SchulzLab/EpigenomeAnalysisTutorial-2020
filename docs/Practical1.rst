@@ -1,12 +1,12 @@
 ==================================================================
 Practical I - Detectio of Open Chromatin regions & Footprint calling & Transcription factor prediction
 ==================================================================
-In the first practical, we will perform footprint analysis and motif matching with `HINT <http://www.regulatory-genomics.org/hint/>`_ to identify cell specific binding sites from open chromatin data (ATAC-seq).
+In the first practical, we will perform footprint analysis and motif matching with `HINT <http://www.regulatory-genomics.org/hint/>`_ to identify cell specific binding sites from open chromatin data (ATAC-seq). **Note, be sure you have installed Docker and pulled the container which includes all tools and data for this tutorial.**
 
 
 Example data 
 -----------------------------------------------
-We will analyse here chromatin (ATAC-seq) and gene expression data during human mesoderm development from `Koh PW et al 2016 <https://pubmed.ncbi.nlm.nih.gov/27996962/#&gid=article-figures&pid=figure-1-uid-0>`_. Here, we will focus on regulatory changes between hESC cells and Cardiac mesoderm cells, which were performed in biological duplicates. 
+We will analyse here chromatin (ATAC-seq) and gene expression data during human mesoderm development from `Koh PW et al 2016 <https://pubmed.ncbi.nlm.nih.gov/27996962/#&gid=article-figures&pid=figure-1-uid-0>`_. Here, we focus on regulatory changes between hESC cells and Cardiac mesoderm cells, which were performed in biological duplicates. 
 
 
 Step 1: Quality check, aligment and peak calling of ATAC-seq data
@@ -28,7 +28,7 @@ You can use then `IGV <http://software.broadinstitute.org/software/igv/>`_ to vi
 
 @li, include how to split the differential peak calling. 
 
-If you are interested in running nf-core at a latter stage, you can chekc the script `here <https://github.com/SchulzLab/EpigenomeAnalysisTutorial-2020/blob/master/session1/run.sh>`_.
+If you are interested in running nf-core at a latter stage, you can chekc the script `here <https://github.com/SchulzLab/EpigenomeAnalysisTutorial-2020/blob/master/session1/run_nf_core_atacseq.sh>`_.
 
 
 Step 2: Footprint calling
