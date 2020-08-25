@@ -52,7 +52,7 @@ master_doc = 'index'
 # General information about the project.
 project = 'EpigenomeAnalysisTutorial'
 copyright = '2020, Costa lab, Schulzlab'
-author = 'Ivan Costa, Zhijan Li, Nina Baumgarten, Dennis Hecker, Sivarajan Karunanithi, and Marcel Schulz'
+author = 'Ivan Costa, Zhijian Li, Nina Baumgarten, Dennis Hecker, Sivarajan Karunanithi, and Marcel Schulz'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -149,7 +149,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'ECCB2020Tutorialdoc.tex', 'ECCB2020Tutorial Documentation',
-     'Zhijan Li, Nina Baumgarten, Dennis Hecker, Sivarajan Karunanithi, Ivan Costa and Marcel Schulz','manual'),
+     'Zhijian Li, Nina Baumgarten, Dennis Hecker, Sivarajan Karunanithi, Ivan Costa and Marcel Schulz','manual'),
 ]
 
 latex_elements = {
