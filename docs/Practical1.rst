@@ -108,9 +108,11 @@ The above analyses are based on chromosome 1 and the resutls are likelly to be u
 
 Next, we use a R script to make a nicer visualization of the TF activity score:
 ::
-    Rscript plot_diff.R -i ./results/session1/hint/diff_footprints/differential_statistics.txt -o ./results/session1/hint/diff_footprints/diff_TF.pdf
+    Rscript scripts/session1/plot_diff.R -i ./results/session1/hint/diff_footprints/differential_statistics.txt -o ./results/session1/hint/diff_footprints
 
-Note that this script only consider TFs with significant change in activity (p-value < 0.05). It only consider TFs with at least 1.000 binding sites for TF. Results ranks several GATA TFs, which are well known to be related to cardiac cells, with increase in TF activity, while the well known ES cells factors SOX2:POU5F1 (OCT4) have the second highest decreased in TF activity. You can check on the folder **Lineplots** for the average cleveage profiles of these factors and their corresponding DNA binding preference. 
+The script will generate a divergent bar plot under *./results/session1/hint_chr1/diff_footprints* and two text files which include either Cardiac or hESC specific TFs. Note that it only consider TFs with significant change in activity (p-value < 0.05) and at least 1,000 binding sites for TF. Results rank several GATA TFs, which are well known to be related to cardiac cells, with increase in TF activity, while the well known ES cells factors SOX2:POU5F1 (OCT4) have the second highest decreased in TF activity. You can check 
+
+You can check on the folder **Lineplots** for the average cleveage profiles of these factors and their corresponding DNA binding preference. 
 
 You should compare the motifs/profiles of Gata factors. Are they similar to one another? One caveat of sequence based analysis is that we might predict several TFs, which have a similar motif, equaly. 
 
