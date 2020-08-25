@@ -2,7 +2,7 @@
 Practical I - Detection of Open Chromatin regions & Footprint calling & Transcription factor prediction
 ==================================================================
 
-In the first practical, we will perform footprint analysis and motif matching with `HINT <http://www.regulatory-genomics.org/hint/>`_ to identify cell specific binding sites from open chromatin data (ATAC-seq). Beforehand, be sure you have installed Docker and pulled the container which includes all tools and data for this tutorial.
+In the first practical, we will perform basic analysis of ATAC-seq, footprint analysis and motif matching with `HINT <http://www.regulatory-genomics.org/hint/>`_ to identify cell specific binding sites from open chromatin data (ATAC-seq). Beforehand, be sure you have installed Docker and pulled the container which includes all tools and data for this tutorial.
 
 
 Example data 
@@ -25,7 +25,7 @@ Among other things, the pipeline will generate important files, which will be us
 
 First, you can inspect the QC statistics. Do the atac-seq libraries have any quality issue before and after read trimming?
 
-Next, you can use then `IGV <http://software.broadinstitute.org/software/igv/>`_ to vizualise ATAC-seq signals and peaks particular loci. Open the previously mentioned IGV session and take a look at cardiac related genes, i.e. GATA6, or stem cell related genes, i.e. POU5F1 (OCT4). 
+Next, you can use then `IGV <http://software.broadinstitute.org/software/igv/>`_ to vizualise ATAC-seq signals and peaks particular loci. Open the previously mentioned IGV session and take a look at cardiac related genes, i.e. GATA4 or GATA6, or stem cell related genes, i.e. POU5F1 (OCT4). 
 
 The differential peaks file combined all peaks and here we can split it as hESC and Cardiac specific peaks by:
 ::
@@ -118,4 +118,4 @@ Finally, we will filter the motif matching results to only consider TFs enriched
 
 @li, we need to do a previous step. Maybe the list of tfs can be dumped by the R script? 
 
-You can then open these files in IGV. 
+You can then open these files in IGV and inspect motif hits close to relevant genes (POUF5F1, GATA6 or GATA4). Are you able to find any motif close to a gene? You can also zoom out of your IGV browser and check for potential enhancer regions.
