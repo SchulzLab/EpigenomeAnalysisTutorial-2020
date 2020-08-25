@@ -47,12 +47,12 @@ templates_path = ['_templates']
 source_suffix = '.rst'
 
 # The main toctree document.
-main_doc = 'index'
+master_doc = 'index'
 
 # General information about the project.
 project = 'EpigenomeAnalysisTutorial'
 copyright = '2020, Costa lab, Schulzlab'
-author = 'Ivan Costa, Zhijan Li, Nina Baumgarten, Dennis Hecker, Sivarajan Karunanithi, and Marcel Schulz'
+author = 'Ivan Costa, Zhijian Li, Nina Baumgarten, Dennis Hecker, Sivarajan Karunanithi, and Marcel Schulz'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -148,8 +148,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (main_doc, 'ECCB2020Tutorialdoc.tex', 'ECCB2020Tutorial Documentation',
-     'Zhijan Li, Nina Baumgarten, Dennis Hecker, Sivarajan Karunanithi, Ivan Costa and Marcel Schulz','manual'),
+    (master_doc, 'ECCB2020Tutorialdoc.tex', 'ECCB2020Tutorial Documentation',
+     'Zhijian Li, Nina Baumgarten, Dennis Hecker, Sivarajan Karunanithi, Ivan Costa and Marcel Schulz','manual'),
 ]
 
 latex_elements = {
@@ -161,7 +161,7 @@ latex_elements = {
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (main_doc, 'ECCB2020Tutorialdoc', 'ECCB2020Tutorial Documentation',
+    (master_doc, 'ECCB2020Tutorialdoc', 'ECCB2020Tutorial Documentation',
      [author], 1)
 ]
 
@@ -172,7 +172,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (main_doc, 'ECCB2020Tutorialdoc', 'ECCB2020Tutorialdoc',
+    (master_doc, 'ECCB2020Tutorialdoc', 'ECCB2020Tutorialdoc',
      author, 'ECCB2020Tutorialdoc', 'ECCB2020Tutorial Documentation',
      'Miscellaneous'),
 ]
