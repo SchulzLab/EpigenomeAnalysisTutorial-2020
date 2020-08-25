@@ -120,7 +120,6 @@ Finally, we will filter the motif matching results to only consider TFs enriched
 ::
     mkdir -p ./results/session1/hint/diff_motifmatching
     grep -f ./results/session1/hint/diff_footprints/Cardiac.txt ./results/session1/hint/motifmatching/Cardiac_mpbs.bed > ./results/session1/hint/diff_motifmatching/Cardiac_mpbs.bed
-
-@li, we need to do a previous step. Maybe the list of tfs can be dumped by the R script? 
+    grep -f ./results/session1/hint/diff_footprints/hESC.txt ./results/session1/hint/motifmatching/hESC_mpbs.bed > ./results/session1/hint/diff_motifmatching/hESC_mpbs.bed
 
 You can then open these files in IGV and inspect motif hits close to relevant genes (POUF5F1, GATA6 or GATA4). Are you able to find any motif close to a gene? You can also zoom out of your IGV browser and check for potential enhancer regions.
