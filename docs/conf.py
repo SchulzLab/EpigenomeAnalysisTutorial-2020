@@ -47,7 +47,7 @@ templates_path = ['_templates']
 source_suffix = '.rst'
 
 # The main toctree document.
-main_doc = 'index'
+master_doc = 'index'
 
 # General information about the project.
 project = 'EpigenomeAnalysisTutorial'
