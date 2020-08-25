@@ -4,10 +4,10 @@
    contain the root `toctree` directive.
 
 Welcome to the Epigenomics tutorial documentation!
-=============================================
+==================================================
 
-If you are taking part in our `tutorial  <https://github.com/SchulzLab/EpigenomeAnalysisTutorial-2020>`_, then you find the information here that you need.
-The documentation is split up into 4 parts. Make sure that you read and follow the **What you need**  and **Installation** guides before you appear in Prague.
+If you are taking part in our `tutorial  <https://eccb2020.info/ntbt04-keeping-up-with-epigenomic-analysis-theory-and-practice/>`_, then you find the information here that you need.
+The documentation is split up into 4 parts. Make sure that you read and follow the **What you need**  and **Installation** guides before you join us virtually.
 
 
 Contents:
