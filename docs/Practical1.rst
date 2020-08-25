@@ -46,24 +46,24 @@ Next, we will use `HINT <http://www.regulatory-genomics.org/hint/>`_ to find gen
 
 HINT footprinting analysis is performed for each cell type independetly (hESC and Cardiac) and do not consider replicate information. For this we will use bam files contatining reads from all replicates as well as condition specific consensus peaks. 
 
-We will only consider peaks inside chromosome 1 so that the whole analysis can be done in 30 minutes.
+We will only consider peaks inside chromosome 21 so that the whole analysis can be done in 30 minutes.
 
 **1.** First, go to EpigenomeAnalysisTutorial-2020 and create a folder for results:
 ::
-    mkdir -p ./results/session1/hint_chr1
+    mkdir -p ./results/session1/hint_chr21
 
-**2.** Select peaks from chromosome 1 (this step is only performed to reduce computing time). 
+**2.** Select peaks from chromosome 21 (this step is only performed to reduce computing time). 
 ::
-    mkdir -p ./results/session1/hint_chr1/peaks
-    awk '$1 ~ /^chr(1)$/' ./data/nf_core_atacseq/macs/narrowPeak/hESC.mRp.clN_peaks.narrowPeak > ./results/session1/hint_chr1/peaks/hESC.bed
-    awk '$1 ~ /^chr(1)$/' ./data/nf_core_atacseq/macs/narrowPeak/Cardiac.mRp.clN_peaks.narrowPeak > ./results/session1/hint_chr1/peaks/Cardiac.bed
+    mkdir -p ./results/session1/hint_chr21/peaks
+    awk '$1 ~ /^chr(21)$/' ./data/nf_core_atacseq/macs/narrowPeak/hESC.mRp.clN_peaks.narrowPeak > ./results/session1/hint_chr21/peaks/hESC.bed
+    awk '$1 ~ /^chr(21)$/' ./data/nf_core_atacseq/macs/narrowPeak/Cardiac.mRp.clN_peaks.narrowPeak > ./results/session1/hint_chr21/peaks/Cardiac.bed
 
 **3.** Finally, we can execute HINT twice to find footprints specific to hESC and cardiac cells. This can be done as:
 ::
 
-    mkdir -p ./results/session1/hint_chr1/footprints
-    rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./results/session1/hint_chr1/footprints --output-prefix=hESC ./data/nf_core_atacseq/hESC.mRp.clN.sorted.bam ./results/session1/hint_chr1/peaks/hESC.bed
-    rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./results/session1/hint_chr1/footprints --output-prefix=Cardiac ./data/nf_core_atacseq/Cardiac.mRp.clN.sorted.bam ./results/session1/hint_chr1/peaks/Cardiac.bed
+    mkdir -p ./results/session1/hint_chr21/footprints
+    rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./results/session1/hint_chr21/footprints --output-prefix=hESC ./data/nf_core_atacseq/hESC.mRp.clN.sorted.bam ./results/session1/hint_chr21/peaks/hESC.bed
+    rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./results/session1/hint_chr21/footprints --output-prefix=Cardiac ./data/nf_core_atacseq/Cardiac.mRp.clN.sorted.bam ./results/session1/hint_chr21/peaks/Cardiac.bed
 
 This will generate an output file, i.e  ``./results/session1/hint_chr1/footprints/hESC.bed``, containing the genomic locations of the footprints.  HINT also produces a file with ending ".info", which has general statistics from the analysis as no. of footprints, total number of reads and so on. You can use the head command to check the information contained in footprints:
 ::
