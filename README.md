@@ -10,7 +10,7 @@ One of the main molecular mechanisms controlling the temporal and spatial expres
 This tutorial is targeted to an audience of bioinformaticians with previous experience in gene expression and next generation sequencing analysis. This Intermediary level tutorial will provide you knowledge on the use of state-of-art tools for inference of gene regulatory networks from chromatin and expression data. First, we will review tools to conduct the following analyses: 1) predict regulatory regions from ATAC-seq data, using footprint methods (HINT - Li et al., 2019) and show how to determine cell-specific TF binding in these regions and 2) study how to associate regulatory regions to genes and how to integrate gene expression data (e.g. Schmidt et al. 2016, Durek et al. 2016). 
 After introductory presentations we will guide participants through hands on practicals on real data for both parts. 
 
-# Installatoin instruction
+# Instalation instruction
 
 In order to prepare for the tutorial please do the following:
 
