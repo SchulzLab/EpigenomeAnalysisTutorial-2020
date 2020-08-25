@@ -106,8 +106,7 @@ After the command is done, a txt file **differential_statistics.txt** will be cr
 
 The above analyses are based on chromosome 1 and the resutls are likelly to be underpowered, we therefore provide the complete results using all chromsomes in *./results/session1/hint*. The script for this analysis is found here `here <https://github.com/SchulzLab/EpigenomeAnalysisTutorial-2020/blob/master/session1/run_hint.sh>`_. 
 
-Next, we use a R script to make a nicer visualization of the TF activity score. 
-
+Next, we use a R script to make a nicer visualization of the TF activity score:
 ::
     Rscript plot_diff.R -i ./results/session1/hint/diff_footprints/differential_statistics.txt -o ./results/session1/hint/diff_footprints/diff_TF.pdf
 
