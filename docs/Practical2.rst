@@ -1,5 +1,5 @@
 ==================================================================
-Practical II - Linking regoins to genes and integration with gene expression data
+Practical II - Linking regions to genes and integration with gene expression data
 ==================================================================
 In the second practical, we will test various ways how to link elements to genes. These regulatory regions are used in a 
 `DYNAMITE <https://github.com/SchulzLab/TEPIC/blob/master/MachineLearningPipelines/DYNAMITE/README.md>`_ analysis with the aim
