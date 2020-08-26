@@ -14,6 +14,10 @@ Step 1: Quality check, aligment and peak calling of ATAC-seq data
 -----------------------------------------------
 A first step in the analysis of ATAC-seq data are the so callled low level analysis, which includes read trimming, quality check, aligment and peak calling. We have used for this the `nfcore/atacseq <https://github.com/nf-core/atacseq>`_, a rather complete  pipeline for ATAC-seq data. Due to the computational time to run such pipeline, we have pre-computed results and we provide all important files under */data/session1/nf_core_atacseq*.
 
+These files are compressed and you need to unzip it inside your docker image. 
+::
+unzip EpigenomeAnalysisTutorial-2020.zip
+
 Among other things, the pipeline will generate important files, which will be used during this tutorial: 
 
 - quality check (QC) statistics: *~/EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/multiqc/narrowPeak/multiqc_report.html*
@@ -29,7 +33,6 @@ Next, you can use then `IGV <http://software.broadinstitute.org/software/igv/>`_
 
 The differential peaks file combined all peaks and here we can split it as hESC and Cardiac specific peaks by:
 ::
-    cd EpigenomeAnalysisTutorial-2020
     mkdir -p ./results/session1/diff_peaks
     awk '{if ($5 < 0) print $0}' ./data/nf_core_atacseq/macs/narrowPeak/consensus/deseq2/CardiacvshESC/CardiacvshESC.mRp.clN.deseq2.FDR0.05.results.bed > ./results/session1/diff_peaks/hESC.bed
     awk '{if ($5 > 0) print $0}' ./data/nf_core_atacseq/macs/narrowPeak/consensus/deseq2/CardiacvshESC/CardiacvshESC.mRp.clN.deseq2.FDR0.05.results.bed > ./results/session1/diff_peaks/Cardiac.bed
