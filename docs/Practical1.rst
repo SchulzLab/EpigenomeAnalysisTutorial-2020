@@ -22,7 +22,7 @@ Among other things, the pipeline will generate important files, which will be us
 - peak calling results: *./data/nf_core_atacseq/macs/narrowPeak*
 - differential peak calling results: *./data/nf_core_atacseq/macs/narrowPeak/consensus/deseq2/CardiacvshESC/*
 
-First, you can inspect the QC statistics, just go to *~/container-data/EpigenomeAnalysisTutorial-2020//data/nf_core_atacseq/multiqc/narrowPeak* and double click *multiqc_report.html*. Do the atac-seq libraries have any quality issue before and after read trimming?
+First, you can inspect the QC statistics, just go to *~/container-data/EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/multiqc/narrowPeak* and double click *multiqc_report.html*. Do the atac-seq libraries have any quality issue before and after read trimming?
 
 Next, you can use then `IGV <http://software.broadinstitute.org/software/igv/>`_ to vizualise ATAC-seq signals and peaks particular loci. Open the previously mentioned IGV session and take a look at cardiac related genes, i.e. GATA4 or GATA6, or stem cell related genes, i.e. POU5F1 (OCT4). 
 
