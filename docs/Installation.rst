@@ -8,9 +8,9 @@ You need to have a **laptop/desktop** with the following software installed (see
    - Having a docker user account is not necessary for the purposes of the tutorial. 
 * `IGV <https://software.broadinstitute.org/software/igv/download>`_
 
-======================
+
 Download docker image
-======================
+------------------------------------------------------------------------------
 
 
 Please **download the docker image** we have prepared for the purposes of this tutorial **before** the tutorial. 
@@ -28,9 +28,8 @@ If for some reason if you exit or abort your docker image. You can use the follo
    
 To get out of the docker container, you can simply type *exit*.
 
-===============================================
 How to access data inside the docker container
-================================================
+----------------------------------------------------------------------------------------------
 
 We recommend to access the data inside the container using the proposed method, for the purposes of this tutorial.
 
@@ -45,7 +44,7 @@ Once you are inside the docker container, please run the following command so th
 Now, you can find the zipped folder (EpigenomeAnalysisTutorial-2020.zip) in your local machine at **~/container-data/** folder.
 During the course of the tutorial, if you want to explore some data graphically, you simply need to move/copy the data of interest to **/data** folder inside the container. 
 
-======================
+
 Prepare the data
-======================
+------------------------------------------------------------------------------------------------------
 TODO
