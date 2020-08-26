@@ -47,6 +47,8 @@ Once you are inside the docker container, please run the following command so th
 
    mv /root/EpigenomeAnalysisTutorial-2020.zip /data/
    cd /data
-   unzip EpigenomeAnalysisTutorial-2020.zip -d EpigenomeAnalysisTutorial-2020 
+   unzip EpigenomeAnalysisTutorial-2020.zip -d EpigenomeAnalysisTutorial-2020
    
-Now, you can find the folder EpigenomeAnalysisTutorial-2020 in your local machine at **~/container-data/** folder. We will run all commands under this folder during the course of the tutorial.
+Now, you can find the folder EpigenomeAnalysisTutorial-2020 in your local machine at **~/container-data/** folder. We will run all commands under this folder during the course of the tutorial:
+::
+   cd EpigenomeAnalysisTutorial-2020
