@@ -20,12 +20,12 @@ These files are compressed and you need to unzip it inside your docker image by:
 
 Among other things, the pipeline will generate important files, which will be used during this tutorial: 
 
-- quality check (QC) statistics: *~/EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/multiqc/narrowPeak/multiqc_report.html*
-- alignment files: *~/EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/*
-- genomic profiles (big wig): *~/EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/bigwig*
-- peak calling results: *~/EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/macs/narrowPeak*
-- differential peak calling results: *~/EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/macs/narrowPeak/consensus/deseq2/CardiacvshESC/*
-- IGV session for data vizualistaion: *~/EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/igv* 
+- quality check (QC) statistics: *./EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/multiqc/narrowPeak/multiqc_report.html*
+- alignment files: *./EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/*
+- genomic profiles (big wig): *./EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/bigwig*
+- peak calling results: *./EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/macs/narrowPeak*
+- differential peak calling results: *./EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/macs/narrowPeak/consensus/deseq2/CardiacvshESC/*
+- IGV session for data vizualistaion: *./EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/igv* 
 
 First, you can inspect the QC statistics. Do the atac-seq libraries have any quality issue before and after read trimming?
 
@@ -33,6 +33,7 @@ Next, you can use then `IGV <http://software.broadinstitute.org/software/igv/>`_
 
 The differential peaks file combined all peaks and here we can split it as hESC and Cardiac specific peaks by:
 ::
+    cd EpigenomeAnalysisTutorial-2020
     mkdir -p ./results/session1/diff_peaks
     awk '{if ($5 < 0) print $0}' ./data/nf_core_atacseq/macs/narrowPeak/consensus/deseq2/CardiacvshESC/CardiacvshESC.mRp.clN.deseq2.FDR0.05.results.bed > ./results/session1/diff_peaks/hESC.bed
     awk '{if ($5 > 0) print $0}' ./data/nf_core_atacseq/macs/narrowPeak/consensus/deseq2/CardiacvshESC/CardiacvshESC.mRp.clN.deseq2.FDR0.05.results.bed > ./results/session1/diff_peaks/Cardiac.bed
@@ -61,7 +62,7 @@ We will only consider peaks inside chromosome 21 so that the whole analysis can 
     awk '$1 ~ /^chr(21)$/' ./data/nf_core_atacseq/macs/narrowPeak/hESC.mRp.clN_peaks.narrowPeak > ./results/session1/hint_chr21/peaks/hESC.bed
     awk '$1 ~ /^chr(21)$/' ./data/nf_core_atacseq/macs/narrowPeak/Cardiac.mRp.clN_peaks.narrowPeak > ./results/session1/hint_chr21/peaks/Cardiac.bed
 
-**3.** Finally, we can execute HINT twice to find footprints specific to hESC and cardiac cells. This can be done as:
+**3.** Next, we can execute HINT twice to find footprints specific to hESC and cardiac cells. This can be done as:
 ::
 
     mkdir -p ./results/session1/hint_chr21/footprints
@@ -72,15 +73,15 @@ This will generate an output file, i.e  ``./results/session1/hint_chr1/footprint
 
 You can use the head command to check the information contained in footprints:
 ::
-    head ./results/session1/hint_chr1/footprints/hESC.bed
+    head ./results/session1/hint_chr21/footprints/hESC.bed
 
 The 5th column contains the number of reads around predicted footprint and can be used as metric for ordering footprints, i.e. the more reads the more likelly it is associated to an active binding site. 
 
 **4.** HINT performs footprinting analysis by considering reads at each genomic position after signal normalization and cleveage bias correction.  You need to perform an extra command to generate such signals in order to vizualise this is a genome browser:
 ::
-    mkdir -p ./results/session1/hint_chr1/tracks
-    rgt-hint tracks --bc --bigWig --organism=hg38 --output-location=./results/session1/hint_chr1/tracks --output-prefix=hESC ./data/nf_core_atacseq/hESC.mRp.clN.sorted.bam ./results/session1/hint_chr1/peaks/hESC.bed
-    rgt-hint tracks --bc --bigWig --organism=hg38 --output-location=./results/session1/hint_chr1/tracks --output-prefix=Cardiac ./data/nf_core_atacseq/Cardiac.mRp.clN.sorted.bam ./results/session1/hint_chr1/peaks/Cardiac.bed
+    mkdir -p ./results/session1/hint_chr21/tracks
+    rgt-hint tracks --bc --bigWig --organism=hg38 --output-location=./results/session1/hint_chr21/tracks --output-prefix=hESC ./data/nf_core_atacseq/hESC.mRp.clN.sorted.bam ./results/session1/hint_chr21/peaks/hESC.bed
+    rgt-hint tracks --bc --bigWig --organism=hg38 --output-location=./results/session1/hint_chr21/tracks --output-prefix=Cardiac ./data/nf_core_atacseq/Cardiac.mRp.clN.sorted.bam ./results/session1/hint_chr21/peaks/Cardiac.bed
     
 You can load the newly generated bigwig files and fooptrints with `IGV <http://software.broadinstitute.org/software/igv/>`_ together with the signals and peaks detected by nf-core. Are the bigwig files performed by nf-core and HINT the same? Check for example the genomic profiles around the genes GATA6 and POU5F1 again. 
 
@@ -89,10 +90,10 @@ Step 3: TF binding site prediction
 
 An important question when doing footprint analysis is to evaluate which TF motifs overlap with footprints and evaluate the ATAC-seq profiles around these motifs. RGT suite also offers a tool for finding motif predicted binding sites (MPBSs).
 
-Execute the following commands to do motif matching inside footprints for chromosome 1:
+Execute the following commands to do motif matching inside footprints for chromosome 21:
 ::
-    mkdir -p ./results/session1/hint_chr1/motifmatching
-    rgt-motifanalysis matching --organism=hg38 --output-location=./results/session1/hint_chr1/motifmatching --input-files ./results/session1/hint_chr1/footprints/hESC.bed ./results/session1/hint_chr1/footprints/Cardiac.bed
+    mkdir -p ./results/session1/hint_chr21/motifmatching
+    rgt-motifanalysis matching --organism=hg38 --output-location=./results/session1/hint_chr21/motifmatching --input-files ./results/session1/hint_chr21/footprints/hESC.bed ./results/session1/hint_chr21/footprints/Cardiac.bed
 
 The above commands will generate bed files (i.e. Cardiac_mpbs.bed) containing MPBSs overlapping with distinct footprint regions. The 4th column contains the motif name and the 5th column the bit-score of the motif matching. Higher bit-score indicates higher agreement of the motif with the DNA sequence. HINT uses Jaspar database as default for motifs, but it allows users to user other databased or to define `custom databases <https://www.regulatory-genomics.org/motif-analysis/additional-motif-data/>`_ as well. 
 
