@@ -77,7 +77,7 @@ Now we have three lists of target genes for our candidate regions from different
 
 In addition to the Upset plot, the script will also create a bar plot which depicts the percentage of target genes that are differentially expressed (DE) for all approaches. Further, you will find four new gene ID files. For each approach we filter the target genes for differentially expressed genes and write them into a new file (*...DEGenes_intersection*). The fourth file */Users/dennis/Dev/ECCB20Tutorial/GATA2_TargetGenes/ApproachesMerged_DEGenes_intersection.txt* merges the target genes of all approaches and filters for the DE genes. These files can be used to paste the IDs to functional enrichment analysis tools like `gProfiler <https://biit.cs.ut.ee/gprofiler/gost>`_.
 
-4. Bashed together
+4. All steps in one
 =================
 All of the steps above can also be performed by calling the script *TF_to_UpSet_series.sh*: ::
 
@@ -86,5 +86,5 @@ All of the steps above can also be performed by calling the script *TF_to_UpSet_
 * **-m**: path to the motif hits, exchange the file name to hESC_mpbs.bed when looking at a TF that scores higher in hESC
 * **-t**: TF(s) of interest
 
-This will call all scripts needed one after another, create the output folder and write the files into it. It is adapted to the folder structure of our Docker image, so be sure to edit all paths when you want to call it in a different environment. Like in the example, you can call the script with multiple TFs.
+This will call all scripts needed one after another, create the output folder and write the files into it. It is adapted to the folder structure of our Docker image, so be sure to edit all paths when you want to call it in a different environment. Like in the example, you can call the script with multiple TFs, don't forget the quotation marks when doing so.
 
