@@ -51,11 +51,11 @@ HINT footprinting analysis is performed for each cell type independetly (hESC an
 
 We will only consider peaks inside chromosome 21 so that the whole analysis can be done in 30 minutes.
 
-**1.** First, go to EpigenomeAnalysisTutorial-2020 and create a folder for results:
+**1.** First, go to your docker image and create a folder for results:
 ::
     mkdir -p ./results/session1/hint_chr21
 
-**2.** Select peaks from chromosome 21 (this step is only performed to reduce computing time). 
+**2.** Select peaks from chromosome 21 (this step is only performed to reduce computing time for this practical exercise). 
 ::
     mkdir -p ./results/session1/hint_chr21/peaks
     awk '$1 ~ /^chr(21)$/' ./data/nf_core_atacseq/macs/narrowPeak/hESC.mRp.clN_peaks.narrowPeak > ./results/session1/hint_chr21/peaks/hESC.bed
@@ -68,7 +68,9 @@ We will only consider peaks inside chromosome 21 so that the whole analysis can 
     rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./results/session1/hint_chr21/footprints --output-prefix=hESC ./data/nf_core_atacseq/hESC.mRp.clN.sorted.bam ./results/session1/hint_chr21/peaks/hESC.bed
     rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./results/session1/hint_chr21/footprints --output-prefix=Cardiac ./data/nf_core_atacseq/Cardiac.mRp.clN.sorted.bam ./results/session1/hint_chr21/peaks/Cardiac.bed
 
-This will generate an output file, i.e  ``./results/session1/hint_chr1/footprints/hESC.bed``, containing the genomic locations of the footprints.  HINT also produces a file with ending ".info", which has general statistics from the analysis as no. of footprints, total number of reads and so on. You can use the head command to check the information contained in footprints:
+This will generate an output file, i.e  ``./results/session1/hint_chr1/footprints/hESC.bed``, containing the genomic locations of the footprints.  HINT also produces a file with ending ".info", which has general statistics from the analysis as no. of footprints, total number of reads and so on. Input arguments indicate important information to HINT as genome verion (--organism), chromatin protocol (--atac-seq) and type of read configuration (--paired-end). You can check more information on `HINT here <http://www.regulatory-genomics.org/hint/introduction/>`. 
+
+You can use the head command to check the information contained in footprints:
 ::
     head ./results/session1/hint_chr1/footprints/hESC.bed
 
