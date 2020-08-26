@@ -14,9 +14,7 @@ The documentation is split up into 4 parts. Make sure to read and follow the `**
    :alt: Flowchart of the content
 
 
-.. figure:: ECCBTut_FlowChart.pdf
-   :scale: 100 %
-   :alt: PDF of the flowchart
+`PDF of the flowchart <https://github.com/SchulzLab/EpigenomeAnalysisTutorial-2020/blob/master/docs/ECCBTut_FlowChart.pdf>`_
 
 
 Contents:
