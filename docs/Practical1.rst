@@ -63,7 +63,7 @@ We will only consider peaks inside chromosome 21 so that the whole analysis can 
     rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./results/session1/hint_chr21/footprints --output-prefix=hESC ./data/nf_core_atacseq/hESC.mRp.clN.sorted.bam ./results/session1/hint_chr21/peaks/hESC.bed
     rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./results/session1/hint_chr21/footprints --output-prefix=Cardiac ./data/nf_core_atacseq/Cardiac.mRp.clN.sorted.bam ./results/session1/hint_chr21/peaks/Cardiac.bed
 
-This will generate an output file, i.e  ``./results/session1/hint_chr1/footprints/hESC.bed``, containing the genomic locations of the footprints.  HINT also produces a file with ending ".info", which has general statistics from the analysis as no. of footprints, total number of reads and so on. Input arguments indicate important information to HINT as genome verion (--organism), chromatin protocol (--atac-seq) and type of read configuration (--paired-end). You can check more information on HINT `here <http://www.regulatory-genomics.org/hint/introduction/>`_ . 
+This will generate an output file, i.e  ``./results/session1/hint_chr21/footprints/hESC.bed``, containing the genomic locations of the footprints.  HINT also produces a file with ending ".info", which has general statistics from the analysis as no. of footprints, total number of reads and so on. Input arguments indicate important information to HINT as genome verion (--organism), chromatin protocol (--atac-seq) and type of read configuration (--paired-end). You can check more information on HINT `here <http://www.regulatory-genomics.org/hint/introduction/>`_ . 
 
 You can use the head command to check the information contained in footprints:
 ::
@@ -110,7 +110,7 @@ Next, we use a R script to make a nicer visualization of the TF activity score:
 ::
     Rscript scripts/session1/plot_diff.R -i ./results/session1/hint/diff_footprints/differential_statistics.txt -o ./results/session1/hint/diff_footprints
 
-The script will generate a divergent bar plot under *./results/session1/hint_chr1/diff_footprints* and two text files which include either Cardiac or hESC specific TFs. Note that it only consider TFs with significant change in activity (p-value < 0.05) and at least 1,000 binding sites for TF. Results rank several GATA TFs, which are well known to be related to cardiac cells, with increase in TF activity, while the well known ES cells factors SOX2:POU5F1 (OCT4) have the second highest decreased in TF activity.
+The script will generate a divergent bar plot under *./results/session1/hint/diff_footprints* and two text files which include either Cardiac or hESC specific TFs. Note that it only consider TFs with significant change in activity (p-value < 0.05) and at least 1,000 binding sites for TF. Results rank several GATA TFs, which are well known to be related to cardiac cells, with increase in TF activity, while the well known ES cells factors SOX2:POU5F1 (OCT4) have the second highest decreased in TF activity.
 
 You can check on the folder **Lineplots** for the average cleveage profiles of these factors and their corresponding DNA binding preference. 
 
