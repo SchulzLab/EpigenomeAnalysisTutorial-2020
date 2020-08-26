@@ -27,14 +27,6 @@ If, for some reason, you exit or abort your docker image, you can use the follow
    
 To get out of the docker container, you can simply type *exit*.
 
-Setup genomic data
-------------------------------------------------------------------------------
-
-Next, we need to setup the genomic data, here we will use hg38:
-::
-   cd rgtdata
-   python setupGenomicData.py --hg38
-
 How to access data inside the docker container
 ----------------------------------------------------------------------------------------------
 We recommend to access the data inside the container using the proposed method, for the purposes of this tutorial.
