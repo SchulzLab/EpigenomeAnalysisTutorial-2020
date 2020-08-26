@@ -21,7 +21,6 @@ Among other things, the pipeline will generate important files, which will be us
 - genomic profiles (big wig): *./data/nf_core_atacseq/bigwig*
 - peak calling results: *./data/nf_core_atacseq/macs/narrowPeak*
 - differential peak calling results: *./data/nf_core_atacseq/macs/narrowPeak/consensus/deseq2/CardiacvshESC/*
-- IGV session for data vizualistaion: *./data/nf_core_atacseq/igv* 
 
 First, you can inspect the QC statistics. Do the atac-seq libraries have any quality issue before and after read trimming?
 
