@@ -12,7 +12,6 @@ You need to have a **laptop/desktop** with the following software installed (see
 Download docker image
 ------------------------------------------------------------------------------
 
-
 Please **download the docker image** we have prepared for the purposes of this tutorial **before** the tutorial. 
 The size of docker image is **approximately 10GB**. 
 
@@ -28,9 +27,16 @@ If for some reason if you exit or abort your docker image. You can use the follo
    
 To get out of the docker container, you can simply type *exit*.
 
+Setup genomic data
+------------------------------------------------------------------------------
+
+Next, we need to setup the genomic data, here we will use hg38:
+::
+   cd rgtdata
+   python setupGenomicData.py --hg38
+
 How to access data inside the docker container
 ----------------------------------------------------------------------------------------------
-
 We recommend to access the data inside the container using the proposed method, for the purposes of this tutorial.
 
 In the aforementioned *docker run* command you might have noticed the *-v ~/container-data:/data* parameter. 
@@ -40,11 +46,7 @@ We have shipped some preprocessed data as part of our container which can be fou
 Once you are inside the docker container, please run the following command so that you can access these data from your local machine to view in IGV or view the plots : ::
 
    mv /root/EpigenomeAnalysisTutorial-2020.zip /data/
+   cd /data
+   unzip EpigenomeAnalysisTutorial-2020.zip -d EpigenomeAnalysisTutorial-2020 
    
-Now, you can find the zipped folder (EpigenomeAnalysisTutorial-2020.zip) in your local machine at **~/container-data/** folder.
-During the course of the tutorial, if you want to explore some data graphically, you simply need to move/copy the data of interest to **/data** folder inside the container. 
-
-
-Prepare the data
-------------------------------------------------------------------------------------------------------
-TODO
+Now, you can find the folder EpigenomeAnalysisTutorial-2020 in your local machine at **~/container-data/** folder. We will run all commands under this folder during the course of the tutorial.
