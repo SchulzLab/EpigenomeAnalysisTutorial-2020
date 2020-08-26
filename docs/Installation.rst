@@ -32,10 +32,18 @@ To get out of the docker container, you can simply type *exit*.
 How to access data inside the docker container
 ================================================
 
-We recommend to access the data inside the container using the following method, for the purposes of this tutorial. 
-In the aforementioned *docker run* command you might have noticed the * -v ~/container-data:/data * parameter. 
-This parameter enables you to access whatever data you have inside the directory (*/data*) of your container.
+We recommend to access the data inside the container using the proposed method, for the purposes of this tutorial.
 
+In the aforementioned *docker run* command you might have noticed the * -v ~/container-data:/data * parameter. 
+This parameter enables you to access any data you have inside the **/data directory of your container** from your local machine at **~/container-data/**.
+
+We have shipped some preprocessed data as part of our container which can be found at **/root/EpigenomeAnalysisTutorial-2020.zip**. 
+Once you are inside the docker container, please run the following command so that you can access these data from your local machine to view in IGV or view the plots : ::
+
+   mv /root/EpigenomeAnalysisTutorial-2020.zip /data/
+   
+Now, you can find the zipped folder (EpigenomeAnalysisTutorial-2020.zip) in your local machine at **~/container-data/** folder.
+During the course of the tutorial, if you want to explore some data graphically, you simply need to move/copy the data of interest to **/data** folder inside the container. 
 
 ======================
 Prepare the data
