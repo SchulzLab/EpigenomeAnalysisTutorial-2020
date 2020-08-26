@@ -10,11 +10,14 @@ If you are taking part in our `tutorial  <https://eccb2020.info/ntbt04-keeping-u
 The documentation is split up into 4 parts. Make sure to read and follow the `**What you need part** <https://epigenomeanalysistutorial-2020.readthedocs.io/en/latest/Installation.html>`_ with all necessary **Installations** before you join us virtually. Below you can see an illustration of the workflow we planned for you.
 
 .. image:: ECCBTut_FlowChart.png
-   :scale: 80 %
+   :scale: 75 %
    :alt: Flowchart of the content
 
+
 .. figure:: ECCBTut_FlowChart.pdf
+   :scale: 100 %
    :alt: PDF of the flowchart
+
 
 Contents:
 
