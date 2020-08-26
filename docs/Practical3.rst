@@ -1,12 +1,16 @@
-Target genes of candidate regions
+Practical III - Target gene identification of candidate regions
 ---------
 
-In the previous steps we looked at footprints of TF and how their signal differs in between hESC and cardiac mesoderm. This enables us to select TFs of interest and further explore their role in the regulatory machinery that drives the differentiation of the pluripotent hESC to more defined cardiac mesoderm cells. In this step we want to look into different approaches of identifying target genes of genomic regions with regulatory potential. We will use the nearest gene, window-based and association-based approach and compare their results. In the following we will use GATA2 as a placeholder. 
+In the previous steps we looked at footprints of TF and how we can evaluate their difference in activity in between hESC and cardiac mesoderm. This enables us to select TFs of interest and further explore their role in the regulatory machinery that drives the differentiation from hESC to cardiac mesoderm cells. In this step we want to look into different approaches of identifying target genes of genomic regions with regulatory potential. We will use the nearest gene, window-based and association-based approach and compare their results. In the following commands we will use GATA2 as a placeholder, replace it with the TF you are interested in.
 
 1. Fetching candidate regions
 =================
 
-As we do not have any candidate regions yet, we take the regions where HINT annotated a binding site of our selected TF and intersect them with differential ATAC-peaks. The differential peaks were already called by the nf-core preprocessing pipeline. Execute the following script in your console to receive a bed-file with our filtered regions ::
+First of all, we need a directory where we can write our results to::
+
+   mkdir results/session3
+
+As we do not have any candidate regions yet, we take the regions where HINT annotated a binding site of our selected TF and intersect them with differential ATAC-peaks. This will leave us with regions where we expect a binding of our TF and where the cell types differ in their chromatin accessibility. Thus, we can assume that these regions play a role in the change of gene expression. The differential peaks were already called by the nf-core preprocessing pipeline. Execute the following script in your console to receive a bed-file with our filtered regions ::
 
    python3 FootprintTFFilter.py -m hint/motifmatching/Cardiac_mpbs.bed -p CardiacvshESC/CardiacvshESC.mRp.clN.deseq2.FDR0.05.results.bed -tf GATA2 -o GATA2_Hits.bed
 
