@@ -13,7 +13,7 @@ Download docker image
 ------------------------------------------------------------------------------
 
 Please **download the docker image** we have prepared for the purposes of this tutorial **before** the tutorial. 
-The size of docker image is **approximately 30GB**. 
+The size of docker image is **approximately 20GB**. 
 
 You can use the following command: ::
 
