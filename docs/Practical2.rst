@@ -49,11 +49,11 @@ All files used in this step are available in ``/data/EpigenomeAnalysisTutorial-2
 
 Note that we precomputed the differential gene expression estimates. Computing those is neither part of the actual tutorial nor of the *DYNAMITE* workflow.
 
-**1.** Assure that you are in the directory ``/data/EpigenomeAnalysisTutorial-2020
- ``, otherwise *cd* to that directory.
+**1.** Assure that you are in the directory ``/data/EpigenomeAnalysisTutorial-2020``, otherwise *cd* to that directory.
 
 **2.** Generate an output folder for the resulting files:
 ::
+
   mkdir results/session2/DYNAMITE/
   
 **3.** To run the *DYNAMITE* script go to the *DYNAMITE* folder in the *TEPIC* repository `` ../../root/TEPIC/TEPIC2-2/MachineLearningPipelines/DYNAMITE``. We provide two configuration files for the *DYNAMITE* analyses:
