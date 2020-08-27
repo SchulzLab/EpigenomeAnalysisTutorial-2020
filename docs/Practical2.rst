@@ -7,7 +7,7 @@ Step 1: Extracting TF motifs of TFs expressed in the cell types of interest
 Ensure that you are in the directory 
 
 ::
- /data/EpigenomeAnalysisTutorial-2020
+  /data/EpigenomeAnalysisTutorial-2020/
 
 and create a directory where we can write our results to: 
 
