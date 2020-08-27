@@ -49,7 +49,7 @@ All files used in this step are available in ``/data/EpigenomeAnalysisTutorial-2
 
 Note that we precomputed the differential gene expression estimates. Computing those is neither part of the actual tutorial nor of the *DYNAMITE* workflow.
 
-**1.** Assure that you are in the directory ``/data/EpigenomeAnalysisTutorial-2020``, otherwise *cd* to that directory.
+**1.** Assure that you are in the directory ``/data/EpigenomeAnalysisTutorial-2020/``, otherwise *cd* to that directory.
 
 **2.** Generate an output folder for the resulting files:
 ::
