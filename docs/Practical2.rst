@@ -7,14 +7,12 @@ Step 1: Extracting TF motifs of TFs expressed in the cell types of interest
 Ensure that you are in the directory 
 
 ::
-
-/data/EpigenomeAnalysisTutorial-2020
+ /data/EpigenomeAnalysisTutorial-2020
 
 and create a directory where we can write our results to: 
 
 ::
-
-mkdir results/session2/
+ mkdir results/session2/
 
 DYNAMITE requires as input a list of known TF binding motifs. In this step, we want to extract the TF binding motifs of TFs which are expressed in pluripotent cells (hESCs), cardiac mesoderms (CM) or in both cell types. Therefore, we provide the script *extractPSEMsOfExpressedTFs.py*, which expects as input
 
