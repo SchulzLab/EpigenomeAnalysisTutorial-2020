@@ -56,12 +56,12 @@ Note that we precomputed the differential gene expression estimates. Computing t
 
   mkdir results/session2/DYNAMITE/
   
-**3.** To run the *DYNAMITE* script go to the *DYNAMITE* folder in the *TEPIC* repository `` ../../root/TEPIC/TEPIC2-2/MachineLearningPipelines/DYNAMITE``. We provide two configuration files for the *DYNAMITE* analyses:
+**3.** To run the *DYNAMITE* script go to the *DYNAMITE* folder in the *TEPIC* repository `` ../../root/TEPIC2-2/MachineLearningPipelines/DYNAMITE/``. We provide two configuration files for the *DYNAMITE* analyses:
 
 #. DYNAMITE-hESCvsCM-Top800DEGs.cfg
 #. DYNMAITE-hESCvsCM-DEGs-fdr0.1.cfg
 
-The configuration files are stored in the directory ``? ``. They list all parameters that are needed for a run of *DYNAMITE*. 
+The configuration files list all parameters that are needed for a run of *DYNAMITE*. 
 To help you customize these files for later usage, we explain the essential parameters here:
 
 * open_regions_Group1: One or more files containing candidate transcription factor binding sites for samples belonging to group 1
