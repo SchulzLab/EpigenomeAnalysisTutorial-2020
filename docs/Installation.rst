@@ -27,6 +27,8 @@ If, for some reason, you exit or abort your docker image, you can use the follow
    
 To get out of the docker container, you can simply type *exit*.
 
+**TODO**: ADD docker pull command information
+
 How to access data inside the docker container
 ----------------------------------------------------------------------------------------------
 We recommend to access the data inside the container using the proposed method, for the purposes of this tutorial.
