@@ -35,7 +35,7 @@ The differential peaks file combined all peaks and here we can split it as hESC 
     
 The above commands will check the sign in 5th column and output as hESC specific peak if values are negative. 
 
-If you are interested in running nf-core at a latter stage, you can check the script `here <https://github.com/SchulzLab/EpigenomeAnalysisTutorial-2020/blob/master/session1/run_nf_core_atacseq.sh>`_.
+If you are interested in running nf-core at a latter stage, you can check the script `here <https://github.com/SchulzLab/EpigenomeAnalysisTutorial-2020/blob/master/scripts/session1/run_nf_core_atacseq.sh>`_.
 
 
 Step 2: Footprint calling
