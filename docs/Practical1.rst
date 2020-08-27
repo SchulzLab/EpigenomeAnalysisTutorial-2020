@@ -12,7 +12,7 @@ We will analyse here chromatin (ATAC-seq) and gene expression data during human 
 
 Step 1: Quality check, aligment and peak calling of ATAC-seq data
 -----------------------------------------------
-A first step in the analysis of ATAC-seq data are the so callled low level analysis, which includes read trimming, quality check, aligment and peak calling. We have used for this the `nfcore/atacseq <https://github.com/nf-core/atacseq>`_, a rather complete  pipeline for ATAC-seq data. Due to the computational time to run such pipeline, we have pre-computed results and we provide all important files under */data/nf_core_atacseq*.
+A first step in the analysis of ATAC-seq data are the so called low level analysis, which includes read trimming, quality check, aligment and peak calling. We have used for this the `nfcore/atacseq <https://github.com/nf-core/atacseq>`_, a rather complete  pipeline for ATAC-seq data. Due to the computational time to run such pipeline, we have pre-computed results and we provide all important files under */data/nf_core_atacseq*.
 
 Among other things, the pipeline will generate important files, which will be used during this tutorial: 
 
@@ -21,6 +21,7 @@ Among other things, the pipeline will generate important files, which will be us
 - genomic profiles (big wig): *./data/nf_core_atacseq/bigwig*
 - peak calling results: *./data/nf_core_atacseq/macs/narrowPeak*
 - differential peak calling results: *./data/nf_core_atacseq/macs/narrowPeak/consensus/deseq2/CardiacvshESC/*
+- IGV session: *./data/nf_core_atacseq/IGV/igv_session.xml*
 
 First, you can inspect the QC statistics, just go to *~/container-data/EpigenomeAnalysisTutorial-2020/data/nf_core_atacseq/multiqc/narrowPeak* and double click *multiqc_report.html*. Do the atac-seq libraries have any quality issue before and after read trimming?
 
@@ -34,7 +35,7 @@ The differential peaks file combined all peaks and here we can split it as hESC 
     
 The above commands will check the sign in 5th column and output as hESC specific peak if values are negative. 
 
-If you are interested in running nf-core at a latter stage, you can chekc the script `here <https://github.com/SchulzLab/EpigenomeAnalysisTutorial-2020/blob/master/session1/run_nf_core_atacseq.sh>`_.
+If you are interested in running nf-core at a latter stage, you can check the script `here <https://github.com/SchulzLab/EpigenomeAnalysisTutorial-2020/blob/master/session1/run_nf_core_atacseq.sh>`_.
 
 
 Step 2: Footprint calling
@@ -42,7 +43,7 @@ Step 2: Footprint calling
 
 Next, we will use `HINT <http://www.regulatory-genomics.org/hint/>`_ to find genomic regions (footprints) with cell specific TF binding sites. For this, HINT requires (1) a sorted bam file containing the aligned reads from the sequencing library (DNase-,ATAC- or histone ChIP-seq) (2) and a bed file including peaks detected in the same sequencing library provided in (1). These peak regions are used by HINT to reduce the search space. 
 
-HINT footprinting analysis is performed for each cell type independetly (hESC and Cardiac) and do not consider replicate information. For this we will use bam files contatining reads from all replicates as well as condition specific consensus peaks. 
+HINT footprinting analysis is performed for each cell type independently (hESC and Cardiac) and do not consider replicate information. For this we will use bam files contatining reads from all replicates as well as condition specific consensus peaks. 
 
 We will only consider peaks inside chromosome 21 so that the whole analysis can be done in 30 minutes.
 
@@ -63,15 +64,15 @@ We will only consider peaks inside chromosome 21 so that the whole analysis can 
     rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./results/session1/hint_chr21/footprints --output-prefix=hESC ./data/nf_core_atacseq/hESC.mRp.clN.sorted.bam ./results/session1/hint_chr21/peaks/hESC.bed
     rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./results/session1/hint_chr21/footprints --output-prefix=Cardiac ./data/nf_core_atacseq/Cardiac.mRp.clN.sorted.bam ./results/session1/hint_chr21/peaks/Cardiac.bed
 
-This will generate an output file, i.e  ``./results/session1/hint_chr21/footprints/hESC.bed``, containing the genomic locations of the footprints.  HINT also produces a file with ending ".info", which has general statistics from the analysis as no. of footprints, total number of reads and so on. Input arguments indicate important information to HINT as genome verion (--organism), chromatin protocol (--atac-seq) and type of read configuration (--paired-end). You can check more information on HINT `here <http://www.regulatory-genomics.org/hint/introduction/>`_ . 
+This will generate an output file, i.e  ``./results/session1/hint_chr21/footprints/hESC.bed``, containing the genomic locations of the footprints.  HINT also produces a file with ending ".info", which has general statistics from the analysis as no. of footprints, total number of reads and so on. Input arguments indicate important information to HINT as genome version (--organism), chromatin protocol (--atac-seq) and type of read configuration (--paired-end). You can check more information on HINT `here <http://www.regulatory-genomics.org/hint/introduction/>`_ . 
 
 You can use the head command to check the information contained in footprints:
 ::
     head ./results/session1/hint_chr21/footprints/hESC.bed
 
-The 5th column contains the number of reads around predicted footprint and can be used as metric for ordering footprints, i.e. the more reads the more likelly it is associated to an active binding site. 
+The 5th column contains the number of reads around predicted footprint and can be used as metric for ordering footprints, i.e. the more reads the more likely it is associated to an active binding site. 
 
-**4.** HINT performs footprinting analysis by considering reads at each genomic position after signal normalization and cleveage bias correction.  You need to perform an extra command to generate such signals in order to vizualise this is a genome browser:
+**4.** HINT performs footprinting analysis by considering reads at each genomic position after signal normalization and cleveage bias correction.  You need to perform an extra command to generate such signals in order to visualize them in a genome browser:
 ::
     mkdir -p ./results/session1/hint_chr21/tracks
     rgt-hint tracks --bc --bigWig --organism=hg38 --output-location=./results/session1/hint_chr21/tracks --output-prefix=hESC ./data/nf_core_atacseq/hESC.mRp.clN.sorted.bam ./results/session1/hint_chr21/peaks/hESC.bed
@@ -89,9 +90,9 @@ Execute the following commands to do motif matching inside footprints for chromo
     mkdir -p ./results/session1/hint_chr21/motifmatching
     rgt-motifanalysis matching --organism=hg38 --output-location=./results/session1/hint_chr21/motifmatching --input-files ./results/session1/hint_chr21/footprints/hESC.bed ./results/session1/hint_chr21/footprints/Cardiac.bed
 
-The above commands will generate bed files (i.e. Cardiac_mpbs.bed) containing MPBSs overlapping with distinct footprint regions. The 4th column contains the motif name and the 5th column the bit-score of the motif matching. Higher bit-score indicates higher agreement of the motif with the DNA sequence. HINT uses Jaspar database as default for motifs, but it allows users to user other databased or to define `custom databases <https://www.regulatory-genomics.org/motif-analysis/additional-motif-data/>`_ as well. 
+The above commands will generate bed files (i.e. Cardiac_mpbs.bed) containing MPBSs overlapping with distinct footprint regions. The 4th column contains the motif name and the 5th column the bit-score of the motif matching. Higher bit-score indicates higher agreement of the motif with the DNA sequence. HINT uses Jaspar database as default for motifs, but it allows users to use other databases or to define `custom databases <https://www.regulatory-genomics.org/motif-analysis/additional-motif-data/>`_ as well. 
 
-Step 4: Average footprint porifles and differential activity analysis
+Step 4: Average footprint profiles and differential activity analysis
 ----------------------------------------------------------------------------
 
 Finally, we use HINT to generate average ATAC-seq profiles around MPBSs. This analysis allows us to inspect the chromatin accessibility around the binding sites of a particular factor and indicates the TF activitiy, i.e. higher accessibility and clear footprints indicates higher TF activity. Moreover, by comparing the profiles from two ATAC-seq libraries (i.s. hESC vs Cardiac cells), we can get insights on changes in transcription factors with increase in activity (or binding) in two cells. For this, execute the following commands:
@@ -104,17 +105,17 @@ The above command will read the motif matching files generated by step 3 and BAM
 
 This command will take ~20 minutes and when it is done, a txt file **differential_statistics.txt** will be created under *./results/session1/hint_chr21/diff_footprints* and it contains the transcription factor (TF) activity dynamics between hESC and Cardiac. HINT performs a statistical test to detect TFs with a significant increase or decrease in activity. In addition, a folder called **Lineplots** can be found, which contains the ATAC-seq profile for each of the motifs found in the mpbs bed files. 
 
-The above analyses are based on chromosome 21 and the resutls are likelly to be underpowered, we therefore provide the complete results using all chromsomes in *./results/session1/hint*. The script for this analysis is found here `here <https://github.com/SchulzLab/EpigenomeAnalysisTutorial-2020/blob/master/session1/run_hint.sh>`_. 
+The above analyses are based on chromosome 21 and the results are likely to be underpowered, we therefore provide the complete results using all chromsomes in *./results/session1/hint*. The script for this analysis is found here `here <https://github.com/SchulzLab/EpigenomeAnalysisTutorial-2020/blob/master/session1/run_hint.sh>`_. 
 
 Next, we use a R script to make a nicer visualization of the TF activity score:
 ::
     Rscript scripts/session1/plot_diff.R -i ./results/session1/hint/diff_footprints/differential_statistics.txt -o ./results/session1/hint/diff_footprints
 
-The script will generate a divergent bar plot under *./results/session1/hint/diff_footprints* and two text files which include either Cardiac or hESC specific TFs. Note that it only consider TFs with significant change in activity (p-value < 0.05) and at least 1,000 binding sites for TF. Results rank several GATA TFs, which are well known to be related to cardiac cells, with increase in TF activity, while the well known ES cells factors SOX2:POU5F1 (OCT4) have the second highest decreased in TF activity.
+The script will generate a divergent bar plot under *./results/session1/hint/diff_footprints* and two text files which include either Cardiac or hESC specific TFs. Note that it only considers TFs with significant change in activity (p-value < 0.05) and at least 1,000 binding sites for TF. Results rank several GATA TFs, which are well known to be related to cardiac cells, with increase in TF activity, while the well known ES cells factors SOX2:POU5F1 (OCT4) have the second highest decrease in TF activity.
 
-You can check on the folder **Lineplots** for the average cleveage profiles of these factors and their corresponding DNA binding preference. 
+You can check on the folder **Lineplots** for the average cleavage profiles of these factors and their corresponding DNA binding preference. 
 
-You should compare the motifs/profiles of Gata factors. Are they similar to one another? One caveat of sequence based analysis is that we might predict several TFs, which have a similar motif, equaly. 
+You should compare the motifs/profiles of Gata factors. Are they similar to one another? One caveat of sequence based analysis is that we might predict several TFs, which have a similar motif, equally. 
 
 Finally, we will filter the motif matching results to only consider TFs enriched in a respective condition. You can do this with the following command:
 ::
@@ -122,4 +123,4 @@ Finally, we will filter the motif matching results to only consider TFs enriched
     grep -f ./results/session1/hint/diff_footprints/Cardiac.txt ./results/session1/hint/motifmatching/Cardiac_mpbs.bed > ./results/session1/hint/diff_motifmatching/Cardiac_mpbs.bed
     grep -f ./results/session1/hint/diff_footprints/hESC.txt ./results/session1/hint/motifmatching/hESC_mpbs.bed > ./results/session1/hint/diff_motifmatching/hESC_mpbs.bed
 
-You can then open these files in IGV and inspect footprints and motif hits close to relevant genes as GATA6. Are you able to find any motif close to a gene? You can also zoom out of your IGV browser and check for potential enhancer regions. Also, you should zoom in in the open chromatin region to see how the base pair signal provided by HINT-ATAC looks like. 
+You can then open these files in IGV and inspect footprints and motif hits close to relevant genes as GATA6. Are you able to find any motif close to a gene? You can also zoom out of your IGV browser and check for potential enhancer regions. Also, you should zoom in the open chromatin region to see how the base pair signal provided by HINT-ATAC looks like. 
