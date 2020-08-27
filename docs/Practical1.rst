@@ -70,7 +70,7 @@ You can use the head command to check the information contained in footprints:
 ::
     head ./results/session1/hint_chr21/footprints/hESC.bed
 
-The 5th column contains the number of reads around predicted footprint and can be used as metric for ordering footprints, i.e. the more reads the more likely it is associated to an active binding site. 
+The first 3 columns define a genomic coordination and the 4th column contains name for each footprint. The 5th column contains the number of reads around predicted footprint and can be used as metric for ordering footprints, i.e. the more reads the more likely it is associated to an active binding site. 
 
 **4.** HINT performs footprinting analysis by considering reads at each genomic position after signal normalization and cleveage bias correction.  You need to perform an extra command to generate such signals in order to visualize them in a genome browser:
 ::
