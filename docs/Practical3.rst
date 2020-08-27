@@ -81,7 +81,7 @@ In addition to the Upset plot, the script will also create a bar plot which depi
 =================
 All of the steps above can also be performed by calling the script *TF_to_UpSet_series.sh*: ::
 
-   ./scripts/session3/TF_to_UpSet_series.sh -m results/session1/hint/motifmatching/Cardiac_mpbs.bed -t "GATA2 GATA4"
+   bash ./scripts/session3/TF_to_UpSet_series.sh -m results/session1/hint/motifmatching/Cardiac_mpbs.bed -t "GATA2 GATA4"
 
 * **-m**: path to the motif hits, exchange the file name to hESC_mpbs.bed when looking at a TF that scores higher in hESC
 * **-t**: TF(s) of interest
