@@ -27,7 +27,11 @@ If, for some reason, you exit or abort your docker image, you can use the follow
    
 To get out of the docker container, you can simply type *exit*.
 
-**TODO**: ADD docker pull command information
+If, for some reason, we ask you to update the docker container, you need to exit the docker container and execute::
+
+   docker pull sivarajank/eccb:latest
+   
+After that you can execute the docker start and attach commands mentioned earlier.
 
 How to access data inside the docker container
 ----------------------------------------------------------------------------------------------
