@@ -17,7 +17,7 @@ The size of docker image is **approximately 30GB**.
 
 You can use the following command: ::
 
-  docker run -it -P --name epigenomics -v ~/container-data:/data sivarajank/eccb:latest
+  docker run -it -P --name epigenomics -v ~/container-data:/data sivarajank/epigenomics_tutorial:latest
 
 The *name* parameter assigns a name to your docker image. If you used the above command it is *epigenomics (--name)*. 
 If, for some reason, you exit or abort your docker image, you can use the following commands to re-login to the docker container. : ::
@@ -29,7 +29,7 @@ To get out of the docker container, you can simply type *exit*.
 
 If, for some reason, we ask you to update the docker container, you need to exit the docker container and execute::
 
-   docker pull sivarajank/eccb:latest
+   docker pull sivarajank/epigenomics_tutorial:latest
    
 After that you can execute the docker start and attach commands mentioned earlier.
 
