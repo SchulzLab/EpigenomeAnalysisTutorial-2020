@@ -37,9 +37,8 @@ This parameter enables you to access any data you have inside the **/data** dire
 We have shipped some preprocessed data as part of our container which can be found at **/root/EpigenomeAnalysisTutorial-2020.zip**. 
 Once you are inside the docker container, please run the following command so that you can access this data from your local machine to view in IGV or view the plots : ::
 
-   mv /root/EpigenomeAnalysisTutorial-2020.tar.gz /data/
+   mv /root/EpigenomeAnalysisTutorial-2020 /data/
    cd /data
-   tar -xvzf EpigenomeAnalysisTutorial-2020.tar.gz
    cp ./EpigenomeAnalysisTutorial-2020/data/genome_hg38.fa /root/rgtdata/hg38/genome_hg38.fa
    
 Now, you can find the folder EpigenomeAnalysisTutorial-2020 in your local machine at **~/container-data/** folder. We will run all commands under this folder during the course of the tutorial. Please take care to keep this directory as you current directory. 
