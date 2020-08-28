@@ -5,8 +5,12 @@ In the previous steps we looked at footprints of TF and how we can evaluate thei
 
 Step 1: Fetching candidate regions
 =================
+Ensure that you are in the correct directory: ::
+   
+    cd /data/EpigenomeAnalysisTutorial-2020/
+ 
 
-First of all, we need a directory where we can write our results to::
+First of all, we need a directory where we can write our results to: ::
 
    mkdir results/session3
 
