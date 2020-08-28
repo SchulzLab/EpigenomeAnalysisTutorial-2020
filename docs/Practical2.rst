@@ -35,17 +35,15 @@ Step 2: Intersect the footprint from HINT with differentially ATAC-peaks
 
 
 Before we can perform the intersection step, we first have to preprocess the footprint. Please run 
+
 ::
 
   awk '{print $1 "\t" $2 "\t" $3 "\t" $4 "\t" $5}' results/session1/hint/footprints/hESC.bed  > results/session2/footprints_hESC.bed
-  
- and 
- 
- ::
+and 
+::
  
   awk '{print $1 "\t" $2 "\t" $3 "\t" $4 "\t" $5}' results/session1/hint/footprints/Cardiac.bed  > results/session2/footprints_CM.bed
   
-
 To intersect the footprint with the differentially ATAC-peaks, we use bedtools intersect command:
 
 ::
@@ -59,12 +57,13 @@ bedtools intersect -a  results/session2/footprints_CM.bed -b data/nf_core_atacse
 Since the footprints are rather short, we need to extend the region by some base pairs, such that all regions are longer than the longest TF binding motif (>21bp). This is necessary to probably compute the TF binding affinity per footprint region during the *DYNAMITE* analysis. Please run the following two commands:
 
 ::
-awk '{print $1 "\t" $2 -10 "\t" $3 +10 "\t" $4 "\t" $5}' results/session2/footprints_DiffPeaks_CM.bed  >results/session2/footprints_DiffPeaks_CM_extended.bed 
+
+  awk '{print $1 "\t" $2 -10 "\t" $3 +10 "\t" $4 "\t" $5}' results/session2/footprints_DiffPeaks_CM.bed  >results/session2/footprints_DiffPeaks_CM_extended.bed 
   
- and 
+and 
 ::
 
-awk '{print $1 "\t" $2 -10 "\t" $3 +10 "\t" $4 "\t" $5}' results/session2/footprints_DiffPeaks_hESC.bed  >results/session2/footprints_DiffPeaks_hESC_extended.bed
+  awk '{print $1 "\t" $2 -10 "\t" $3 +10 "\t" $4 "\t" $5}' results/session2/footprints_DiffPeaks_hESC.bed  >results/session2/footprints_DiffPeaks_hESC_extended.bed
 
 Step 3: Deriving candidate transcriptional regulators using *DYNAMITE*
 ----------------------------------------------------
