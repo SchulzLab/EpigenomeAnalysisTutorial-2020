@@ -92,7 +92,7 @@ Note that we precomputed the differential gene expression estimates. Computing t
 **3.** To run the *DYNAMITE* script go to the *DYNAMITE* folder in the *TEPIC* repository. 
 ::
 
-  cd /root/TEPIC-2.2/MachineLearningPipelines/DYNAMITE/ 
+  cd  /root/TEPIC-2.2/MachineLearningPipelines/DYNAMITE/
 
 We provide a configuration files for the *DYNAMITE* analyses:
 
