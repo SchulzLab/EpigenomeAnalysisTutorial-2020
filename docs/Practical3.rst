@@ -3,7 +3,7 @@ Practical III - Target gene identification of candidate regions
 
 In the previous steps we looked at footprints of TF and how we can evaluate their difference in activity in between hESC and cardiac mesoderm. This enables us to select TFs of interest and further explore their role in the regulatory machinery that drives the differentiation from hESC to cardiac mesoderm cells. In this step we want to look into different approaches for identifying target genes of genomic regions with regulatory potential. We will use the nearest gene, window-based and association-based approach and compare their results. In the following commands we will use GATA2 as a placeholder, replace it with the TF you are interested in.
 
-1. Fetching candidate regions
+Step 1: Fetching candidate regions
 =================
 
 First of all, we need a directory where we can write our results to::
@@ -21,7 +21,7 @@ As we do not have any candidate regions yet, we take the regions where HINT anno
 
 A new folder will be created under *results/session3/GATA4_Targets*. It will contain the file *GATA4_Hits.bed*. This is our candidate region file which we will need for the next steps.
 
-2.1 Target genes - Nearest gene
+Step 2.1: Target genes - Nearest gene
 =================
 
 For linking the nearest gene to a region we make use of the BedTools command closest, or more precisely the `Python implementation <https://daler.github.io/pybedtools/autodocs/pybedtools.bedtool.BedTool.closest.html>`_ of it. For each candidate region we will find the closest TSS. We created a file with the 5' TSS of genes in which *closest* will search in. To get the list with the IDs of all closest genes execute: ::
@@ -35,7 +35,7 @@ For linking the nearest gene to a region we make use of the BedTools command clo
 
 You will find the file *Nearest_Genes.txt* in the *results/session3/GATA4_Targets* folder.
 
-2.2 Target genes - Window-based approach
+Step 2.2: Target genes - Window-based approach
 =================
 
 The window-based approach looks in a defined window around the TSS of a gene and all candidate regions that are located inside of this window are linked to this gene. Call: ::
@@ -49,7 +49,7 @@ The window-based approach looks in a defined window around the TSS of a gene and
 
 The script creates intervals of size **-w** centered around the TSS of each gene and then intersects them with our candidate regions. You will find the identified target genes in *results/session3/GATA4_Targets/Window_Genes.txt*.
 
-2.3 Target genes - Association-based approach
+Step 2.3: Target genes - Association-based approach
 =================
 Both of the other methods are based on coordinates. Although they can yield good results in some cases, they are not able to capture long-ranged enhancer-gene interactions. Association-based methods can overcome this issue by combining data like ATAC-seq or DNase-seq for annotation of regulatory elements (REMs)/enhancers with gene expression data. We will make use of the webserver `EpiRegio <https://epiregio.de/>`_, which incorporates the results of the tool STITCHIT. STITCHIT interprets differences in DNase-signal to explain changes in gene expression among samples of different cell and tissue types. We will use EpiRegio's *Region Query* which will return all annotated regulatory elements and their target genes that overlap with our candidate regions. As required overlap we choose 50%, meaning that at least half of the length of our candidate region has to overlap with a REM. But instead of using the website (feel free to `try it out <https://epiregio.de/regionQuery/>`_ as well), we will call EpiRegio's REST API via the Python package `Requests <https://requests.readthedocs.io/en/master/>`_. Requests allows to make HTTP queries and we can directly continue working with the results. Call the following script::
 
@@ -61,7 +61,7 @@ Both of the other methods are based on coordinates. Although they can yield good
 
 For more details on STITCHIT have a look at the `preprint <https://www.biorxiv.org/content/10.1101/585125v1.full>`_.The publication on EpiRegio can be found `here <https://academic.oup.com/nar/article/48/W1/W193/5847772>`_.
 
-3. Intersecting the identified target genes
+Step 3: Intersecting the identified target genes
 =================
 
 Now we have three lists of target genes for our candidate regions from different approaches. To compare them, we will create an Upset plot, displaying the intersection with the list of differentially expressed genes which were called by DESeq2 (FDR 0.01). To create the plot use the command::
@@ -77,7 +77,7 @@ Now we have three lists of target genes for our candidate regions from different
 
 In addition to the Upset plot, the script will also create a bar plot which depicts the percentage of target genes that are differentially expressed (DE) for all approaches. Further, you will find four new gene ID files. For each approach we filter the target genes for differentially expressed genes and write them into a new file (*...DEGenes_intersection*). The fourth file */Users/dennis/Dev/ECCB20Tutorial/GATA2_TargetGenes/ApproachesMerged_DEGenes_intersection.txt* merges the target genes of all approaches and filters for the DE genes. These files can be used to paste the IDs to functional enrichment analysis tools like `gProfiler <https://biit.cs.ut.ee/gprofiler/gost>`_.
 
-4. All steps in one
+Step 4: All steps in one
 =================
 All of the steps above can also be performed by calling the script *TF_to_UpSet_series.sh*: ::
 
