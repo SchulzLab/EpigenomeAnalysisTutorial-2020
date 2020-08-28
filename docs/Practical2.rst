@@ -89,10 +89,10 @@ Note that we precomputed the differential gene expression estimates. Computing t
 
   mkdir results/session2/DYNAMITE/
   
-**3.** To run the *DYNAMITE* script go to the *DYNAMITE* folder in the *TEPIC* repository `` ../../root/TEPIC2-2/MachineLearningPipelines/DYNAMITE/``. We provide two configuration files for the *DYNAMITE* analyses:
+**3.** To run the *DYNAMITE* script go to the *DYNAMITE* folder in the *TEPIC* repository `` ../../root/TEPIC2-2/MachineLearningPipelines/DYNAMITE/``. We provide a configuration files for the *DYNAMITE* analyses:
 
 #. DYNAMITE-hESCvsCM-Top800DEGs.cfg
-#. DYNMAITE-hESCvsCM-DEGs-fdr0.1.cfg
+
 
 The configuration files list all parameters that are needed for a run of *DYNAMITE*. 
 To help you customize these files for later usage, we explain the essential parameters here:
@@ -113,22 +113,13 @@ To help you customize these files for later usage, we explain the essential para
 In the scope of the tutorial, you do not have to change any of those. A full description of all parameters is provided `here <https://github.com/SchulzLab/TEPIC/blob/master/MachineLearningPipelines/DYNAMITE/README.md>`_.
 
 
-TODO: ... ab hier
 **4.** Run the individual pairwise comparisons for LSK vs B:
 ::
   
-  bash runDYNAMITE.sh $HOME/EpigenomicsTutorial-ISMB2017/session2/step3/input/DYNAMITE-LSKvsB.cfg
+  bash runDYNAMITE.sh  DYNAMITE-hESCvsCM-Top800DEGs.cfg 
 
-LSK vs CD4:
-::
-  bash runDYNAMITE.sh $HOME/EpigenomicsTutorial-ISMB2017/session2/step3/input/DYNAMITE-LSKvsCD4.cfg
 
-and B vs CD4:
-::
-  bash runDYNAMITE.sh $HOME/EpigenomicsTutorial-ISMB2017/session2/step3/input/DYNAMITE-BvsCD4.cfg
-
-Note that you have to **replace** the prefix ``$HOME`` with the proper path to the tutorial repository, if you have not cloned it to your *home* directory. 
-The results of the analysis will be stored separately for each run in ``EpigenomicsTutorial-ISMB2017/session2/step3/output``. There are three subfolders for
+The result of the analysis will be stored  in ``/data/EpigenomeAnalysisTutorial-2020/results/session2/DYNAMITE/``. There are three subfolders for
 each comparison:
 
 #. Affinities
@@ -136,11 +127,9 @@ each comparison:
 #. Learning_Results
 
 The folder *Affinities* contains TF affinities calculated in the provided regions for both groups, gene TF scores for both groups, and a metadata file that
-lists all settings used for the TF annotation with *TEPIC* (subfolders *group1* and *group2*). The subfolder *mean* contains the mean gene TF scores computed for group1 and group2. This is needed if you analyze more than one biological replicate per group. The folder *ratio* contains the gene TF score ratios computed between
-the gene TF scores of group1 and group2.
+lists all settings used for the TF annotation with *TEPIC* (subfolders *group1* and *group2*). The subfolder *mean* contains the mean gene TF scores computed for group1 and group2. This is needed if you analyze more than one biological replicate per group. The folder *ratio* contains the gene TF score ratios computed between the gene TF scores of group1 and group2.
 
-The folder *IntegratedData* encloses matrices that are composed of (1) gene TF score ratios and (2) a measure of differential gene expression. In the folder *Log2* the differential gene expression
-is represented as the log2 expression ratio between group1 and group2. In the folder *Binary*, the differential gene expression is shown in a binary way. Here, a 1 means a gene is upregulated in group 1 compared to group 2, whereas a 0 means it is down-regulated in group1. The binary format is used as input for the classification. 
+The folder *IntegratedData* encloses matrices that are composed of (1) gene TF score ratios and (2) a measure of differential gene expression. In the folder *Log2* the differential gene expression is represented as the log2 expression ratio between group1 and group2. In the folder *Binary*, the differential gene expression is shown in a binary way. Here, a 1 means a gene is upregulated in group 1 compared to group 2, whereas a 0 means it is down-regulated in group1. The binary format is used as input for the classification. 
 
 The folder *Learning_Results* comprises the results of the logistic regression classifier. The following files should be produced if all R dependencies are available:
 
@@ -148,12 +137,12 @@ The folder *Learning_Results* comprises the results of the logistic regression c
 #. Confusion-Matrix_<1..6>_Integrated_Data_For_Classification.txt
 #. Regression_Coefficients_Cross_Validation_Integrated_Data_For_Classification.txt
 #. Regression_Coefficients_Entire_Data_Set_Integrated_Data_For_Classification.txt
-#. Performance_Barplots.png
+#. Performance_Barplots.pdf
 #. Regression_Coefficients_Cross_Validation_Heatmap_Integrated_Data_For_Classification.svg
-#. Regression_Coefficients_Entire_Data_SetIntegrated_Data_For_Classification.png
+#. Regression_Coefficients_Entire_Data_SetIntegrated_Data_For_Classification.pdf
 #. Misclassification_Lambda_<1..6>_Integrated_Data_For_Classification.svg
 
-The file *Performance_overview.txt* contains accuracy on Test and Training data sets as well as F1 measures. These values are visualized in *Performance_Barplots.png*.
+The file *Performance_overview.txt* contains accuracy on Test and Training data sets as well as F1 measures. These values are visualized in *Performance_Barplots.pdf*.
 As the name suggests, the files *Confusion-Matrix_<1..6>_Integrated_Data_For_Classification.txt* contain the confusion matrix computed on the test data sets.
 They show model performance by reporting True Positives (TP), False Positives (FP), True Negatives (TN), and False Negatives (FN) in the following layout:
 
@@ -170,20 +159,7 @@ the outer cross validation. This is very well suited to find features that are s
 *Regression_Coefficients_Cross_Validation_Integrated_Data_For_Classification.txt*. The stronger a regression coefficient, the more important it is in the model.
 
 In addition to the heatmap showing the regression coefficients during the outer cross validation, we also show the regression coefficients learned on the full
-data set: *Regression_Coefficients_Entire_Data_SetIntegrated_Data_For_Classification.png* and *Regression_Coefficients_Entire_Data_Set_Integrated_Data_For_Classification.txt*.
+data set: *Regression_Coefficients_Entire_Data_SetIntegrated_Data_For_Classification.pdf* and *Regression_Coefficients_Entire_Data_Set_Integrated_Data_For_Classification.txt*.
 
 The figures *Misclassification_Lambda_<1..6>_Integrated_Data_For_Classification.svg* are of technical nature. They show the relationship between the misclassification error and the lambda parameter of the logistic regression function. 
 
-**5.** In addition to the plots describing model performance and feature selection generated by *DYNAMITE* (as described `here <https://github.com/SchulzLab/TEPIC/blob/master/MachineLearningPipelines/DYNAMITE/README.md>`_), you can create further Figures for a distinct feature of interest
-using the script ``TEPIC/MachineLearningPipelines/DYNAMITE/Scripts/generateFeaturePlots.R``. This will provide you with density plots showing the distribution of the feature in 
-the two cell types, scatter plots linking feature value to gene expression changes, and a mini heatmap visualising the features regression coefficients. 
-
-To use this script, go to the output folder of step 3 ``EpigenomicsTutorial-ISMB2017/session2/step3/output`` and use the command
-::
-
-  Rscript $HOME/TEPIC/MachineLearningPipelines/DYNAMITE/Scripts/generateFeaturePlots.R LSK-vs-CD4 HOXA3 LSK CD4
-
-
-This command will generate a plot comparing HOXA3 in LSK against CD4. Feel free to look at further features as you wish. The figure will be stored in the specified directory that contains the results of the *DYNAMITE* analysis.
-Again, note that you have to **replace** the prefix ``$HOME`` with the proper path used on your system, if necessary.
-Precomputed results are stored in ``/EpigenomicsTutorial-ISMB2017/session2/step3/result``.
