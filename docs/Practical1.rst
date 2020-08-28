@@ -12,7 +12,7 @@ We will analyse here chromatin (ATAC-seq) and gene expression data during human 
 
 Step 1: Quality check, aligment and peak calling of ATAC-seq data
 -----------------------------------------------
-A first step in the analysis of ATAC-seq data are the so called low level analysis, which includes read trimming, quality check, aligment and peak calling. We have used for this the `nfcore/atacseq <https://github.com/nf-core/atacseq>`_, a rather complete  pipeline for ATAC-seq data. Due to the computational time to run such pipeline, we have pre-computed results and we provide all important files under */data/nf_core_atacseq*.
+A first step in the analysis of ATAC-seq data are the so called low level analysis, which includes read trimming, quality check, aligment and peak calling. We have used for this the `nfcore/atacseq <https://github.com/nf-core/atacseq>`_, a rather complete  pipeline for ATAC-seq data. Due to the computational time to run such pipeline, we have pre-computed results and we provide all important files under *./data/nf_core_atacseq*.
 
 Among other things, the pipeline will generate important files, which will be used during this tutorial: 
 
@@ -47,7 +47,7 @@ HINT footprinting analysis is performed for each cell type independently (hESC a
 
 We will only consider peaks inside chromosome 21 so that the whole analysis can be done in 30 minutes.
 
-**1.** First, go to your docker image and create a folder for results:
+**1.** First, create a folder for results:
 ::
     mkdir -p ./results/session1/hint_chr21
 
@@ -59,7 +59,6 @@ We will only consider peaks inside chromosome 21 so that the whole analysis can 
 
 **3.** Next, we can execute HINT twice to find footprints specific to hESC and cardiac cells. This can be done as:
 ::
-
     mkdir -p ./results/session1/hint_chr21/footprints
     rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./results/session1/hint_chr21/footprints --output-prefix=hESC ./data/nf_core_atacseq/hESC.mRp.clN.sorted.bam ./results/session1/hint_chr21/peaks/hESC.bed
     rgt-hint footprinting --atac-seq --paired-end --organism=hg38 --output-location=./results/session1/hint_chr21/footprints --output-prefix=Cardiac ./data/nf_core_atacseq/Cardiac.mRp.clN.sorted.bam ./results/session1/hint_chr21/peaks/Cardiac.bed
