@@ -77,7 +77,7 @@ The first 3 columns define a genomic coordination and the 4th column contains na
     rgt-hint tracks --bc --bigWig --organism=hg38 --output-location=./results/session1/hint_chr21/tracks --output-prefix=hESC ./data/nf_core_atacseq/hESC.mRp.clN.sorted.bam ./results/session1/hint_chr21/peaks/hESC.bed
     rgt-hint tracks --bc --bigWig --organism=hg38 --output-location=./results/session1/hint_chr21/tracks --output-prefix=Cardiac ./data/nf_core_atacseq/Cardiac.mRp.clN.sorted.bam ./results/session1/hint_chr21/peaks/Cardiac.bed
     
-You can load the newly generated bigwig files and fooptrints with `IGV <http://software.broadinstitute.org/software/igv/>`_ together with the signals and peaks detected by nf-core. Are the bigwig files performed by nf-core and HINT the same? Check for example the genomic profiles around the genes GATA6 and POU5F1 again. 
+You can load the newly generated bigwig files and fooptrints with `IGV <http://software.broadinstitute.org/software/igv/>`_ together with the signals and peaks detected by nf-core.
 
 Step 3: TF binding site prediction
 -----------------------------------
