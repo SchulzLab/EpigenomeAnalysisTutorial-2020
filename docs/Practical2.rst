@@ -27,12 +27,12 @@ Please run the script using the following command:
 
 ::
 
-  python scripts/session2/extractPSEMsOfExpressedTFs.py data/meanTPM_hESC.txt  data/meanTPM_CM.txt  data/PSEM_JASPAR2020.txt results/session2/PSEMs_JASPAR2020_TPM_0.5.txt data/ensemblID_GeneName.txt 0.5
+  scripts/session2/extractPSEMsOfExpressedTFs.py data/meanTPM_hESC.txt  data/meanTPM_CM.txt  data/PSEM_JASPAR2020.txt results/session2/PSEMs_JASPAR2020_TPM_0.5.txt data/ensemblID_GeneName.txt 0.5
 
 Step 2: Intersect the footprint from HINT with differentially ATAC-peaks
 ----------------------------------------------------
 
-TODO: einleitungssatz
+As input regions for *DYNAMITE* we are going to use the footprint computed with *HINT* which we intersect with the differentially ATAC-peak.
 
 Before we can perform the intersection step, we first have to preprocess the footprint. Please run 
 
@@ -44,7 +44,7 @@ and
  
   awk '{print $1 "\t" $2 "\t" $3 "\t" $4 "\t" $5}' results/session1/hint/footprints/Cardiac.bed  > results/session2/footprints_CM.bed
   
-To intersect the footprint of the hESC and the cardiac mesoderms with the differentially ATAC-peaks, we use bedtools intersect command. Please run: 
+To intersect the footprint of the hESC and the cardiac mesoderms with the differentially ATAC-peaks, we use bedtools intersect command.
 
 ::
 
