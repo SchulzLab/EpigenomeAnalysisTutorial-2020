@@ -14,15 +14,8 @@ After introductory presentations we will guide participants through hands on pra
 
 We have created a ReadTheDocs documentation for the participants to setup the required software for the tutorial and for publishing the final working examples, accessible [here](https://epigenomeanalysistutorial-2020.readthedocs.io/en/latest/index.html).
 
-# Schedule (1.9.2020)
+# Schedule
 
+[ECCB2020](https://github.com/SchulzLab/EpigenomeAnalysisTutorial-2020/blob/master/Schedule_ECCB2020.md)
 
-| Time        | Topic           | 
-| ------------- |:-------------:|
-| 13:30 - 13:45      | Introduction: Scope of the tutorial |
-| 13:45 - 14:15      | Methods and algorithms for epigenome analysis: peak/footprint-calling, and transcription factor motif analysis      |  
-|14:15 - 15:00 | Practical 1: Analysis of  ATAC-seq data     | 
-|15:00 - 15:30  | Approaches for identifying target genes of regulatory elements     | 
-|15:30 - 16:15 | Practical 2 & 3: Integrative analysis of regulatory regions and gene expression   | 
-|16:15 - 16:30 | Wrap-up and discussion | 
-
+[GCB2020](https://github.com/SchulzLab/EpigenomeAnalysisTutorial-2020/blob/master/Schedule_GCB2020.md)
