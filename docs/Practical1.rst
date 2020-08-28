@@ -12,7 +12,7 @@ We will analyse here chromatin (ATAC-seq) and gene expression data during human 
 
 Step 1: Quality check, aligment and peak calling of ATAC-seq data
 -----------------------------------------------
-A first step in the analysis of ATAC-seq data are the so called low level analysis, which includes read trimming, quality check, aligment and peak calling. We have used for this the `nfcore/atacseq <https://github.com/nf-core/atacseq>`_, a rather complete  pipeline for ATAC-seq data. Due to the computational time to run such pipeline, we have pre-computed results and we provide all important files under */data/nf_core_atacseq*.
+A first step in the analysis of ATAC-seq data are the so called low level analysis, which includes read trimming, quality check, aligment and peak calling. We have used for this the `nfcore/atacseq <https://github.com/nf-core/atacseq>`_, a rather complete  pipeline for ATAC-seq data. Due to the computational time to run such pipeline, we have pre-computed results and we provide all important files under *./data/nf_core_atacseq*.
 
 Among other things, the pipeline will generate important files, which will be used during this tutorial: 
 
