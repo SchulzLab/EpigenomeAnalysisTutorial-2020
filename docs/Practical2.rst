@@ -33,10 +33,11 @@ Please run the script using the following command:
 
 ::
 
-  python3 scripts/session2/extractPSEMsOfExpressedTFs.py data/meanTPM_hESC.txt  data/meanTPM_CM.txt  data/PSEM_JASPAR2020.txt results/session2/PSEMs_JASPAR2020_TPM_0.5.txt data/ensemblID_GeneName.txt 0.5
+  python scripts/session2/extractPSEMsOfExpressedTFs.py data/meanTPM_hESC.txt  data/meanTPM_CM.txt  data/PSEM_JASPAR2020.txt results/session2/PSEMs_JASPAR2020_TPM_0.5.txt data/ensemblID_GeneName.txt 0.5
 
 Step 2: Intersect the footprint from HINT with differentially ATAC-peaks
 ----------------------------------------------------
+TODO:explain more
 
 As input regions for *DYNAMITE* we are going to use the footprint computed with *HINT* which we intersect with the differentially ATAC-peak.
 
