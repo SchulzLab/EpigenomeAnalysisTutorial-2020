@@ -37,9 +37,8 @@ Please run the script using the following command:
 
 Step 2: Intersect the footprint from HINT with differentially ATAC-peaks
 ----------------------------------------------------
-TODO:explain more
 
-As input regions for *DYNAMITE* we are going to use the footprint computed with *HINT* which we intersect with the differentially ATAC-peak.
+As input regions for *DYNAMITE* we are going to use the footprint computed with *HINT*, which we intersect with the differential ATAC-peak. The remaining footprint are regions where we expect binding sites of key TFs and where we observe different chromatin accessibility between hESC and cardiac mesoderms. 
 
 Before we can perform the intersection step, we first have to preprocess the footprint. Please run 
 
