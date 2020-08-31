@@ -3,7 +3,7 @@ Practical II - Linking regions to genes and integration with gene expression dat
 ==================================================================
 
 In the last step of practical 1, we already identified enriched TFs, which overlap with the predicted footprint.  In this part, we are going to infer TFs that might be related to gene expression differences between hESC and cardiac mesoderms. Therefore, we first link the footprints to potential target genes using 
-`TEPIC <https://github.com/SchulzLab/TEPIC>`_, and then apply `DYNAMITE <https://github.com/SchulzLab/TEPIC/blob/master/MachineLearningPipelines/DYNAMITE/README.md>`_. *DYNAMITE* uses a logistic regression classifier to identify key regulators, which might explain changes in gene expression. 
+`TEPIC <https://github.com/SchulzLab/TEPIC>`_, and then apply `DYNAMITE <https://github.com/SchulzLab/TEPIC/blob/master/MachineLearningPipelines/DYNAMITE/README.md>`_. The tool uses a logistic regression classifier to identify key regulators, which might explain changes in gene expression. 
 
 Step 1: Extracting TF motifs of TFs expressed in the cell types of interest
 ----------------------------------------------------
