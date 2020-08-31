@@ -49,3 +49,7 @@ Once you are inside the docker container, please run the following command so th
 Now, you can find the folder EpigenomeAnalysisTutorial-2020 in your local machine at **~/container-data/** folder. We will run all commands under this folder during the course of the tutorial. Please take care to keep this directory as you current directory. 
 ::
    cd EpigenomeAnalysisTutorial-2020
+   
+TODO:
+-----
+ADD INFO about Windows commands and deleting the images and freeing up space
