@@ -59,7 +59,7 @@ Now, you can find the folder EpigenomeAnalysisTutorial-2020 in your local machin
 How to remove all the containers and images **after the tutorial**
 ----------------------------------------------------------------------
 
-If you want to remove **all** docker content from your system, you can run the following commands: ::
+If you want to **remove all docker content (images/containers)** from your system, you can run the following commands: ::
 
    docker rm epigenomics
    docker image prune -a
