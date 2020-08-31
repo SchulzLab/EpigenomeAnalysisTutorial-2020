@@ -23,7 +23,7 @@ Command for Windows users: ::
    
    docker run -it -P --name epigenomics -v C:\Users\*username*\Documents\container-data:/data sivarajank/epigenomics_tutorial:latest
    
-Please do not forget to change your username. 
+Please do **not** forget to change your username. 
    
 The *name* parameter assigns a name to your docker image. If you used the above command it is *epigenomics (--name)*. 
 If, for some reason, you exit or abort your docker image, you can use the following commands to re-login to the docker container. : ::
