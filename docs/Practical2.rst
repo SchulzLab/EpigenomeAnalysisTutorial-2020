@@ -72,7 +72,7 @@ During a *DYNAMITE* analysis, two main computational tasks are undertaken:
 Please check the `documentation <https://github.com/SchulzLab/TEPIC/blob/master/docs/Description.pdf>`_ for details on the method.
 
 We provide a script that automatically performs steps (1) and (2) as well as necessary data processing and formatting steps (See `DYNAMITE documentation <https://github.com/SchulzLab/TEPIC/blob/master/MachineLearningPipelines/DYNAMITE/README.md>`_ for details).
-All files used in this step are available in `` /data/EpigenomeAnalysisTutorial-2020/data/ ``. 
+All files used in this step are available in ``/data/EpigenomeAnalysisTutorial-2020/data/``. 
 
 Note that we precomputed the differential gene expression estimates using DESeq2. Computing those is neither part of the actual tutorial nor of the *DYNAMITE* workflow.
 
