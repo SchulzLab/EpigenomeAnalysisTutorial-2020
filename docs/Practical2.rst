@@ -1,6 +1,9 @@
 ==================================================================
 Practical II - Linking regions to genes and integration with gene expression data
 ==================================================================
+
+In the last step of practical 1, we already identified enriched TFs, which overlap with the predicted footprint.  In this part, we are going to infer TFs that might be related to gene expression differences between hESC and cardiac mesoderms. Therefore, we first link the footprints to potential target genes using `TEPIC <https://github.com/SchulzLab/TEPIC>`, and then apply `DYNAMITE <https://github.com/SchulzLab/TEPIC/blob/master/MachineLearningPipelines/DYNAMITE/README.md>`, which uses a logistic regression classifier to identify key regulators, which might explain changes in gene expression. 
+
 Step 1: Extracting TF motifs of TFs expressed in the cell types of interest
 ----------------------------------------------------
 
@@ -14,15 +17,16 @@ and create a directory where we can write our results to:
 
  mkdir results/session2/
 
-DYNAMITE requires as input a list of known TF binding motifs. In this step, we want to extract the TF binding motifs of TFs which are expressed in pluripotent cells (hESCs), cardiac mesoderms (CM) or in both cell types. Therefore, we provide the script *extractPSEMsOfExpressedTFs.py*, which expects as input
+DYNAMITE requires as input a list of known TF binding motifs. In this step, we want to extract the TF binding motifs of TFs which are expressed in pluripotent cells (hESCs), cardiac mesoderms (CM) or in both cell types. Therefore, we provide the script *extractPSEMsOfExpressedTFs.py*, which expects as input:
 
--	Gene expression values (TPM) from hESCs
--	Gene expression values (TPM) of CMs
--	A file containing all available TF binding motifs as Position specific energy matrices (PSEMs)
--	Output file
--	A mapping from ensembl IDs to gene names
--	TPM value. If the expression value of a TF is higher than  the TPM value, we consider this TF as expressed.
+-	gene expression values (TPM) from hESCs (precomputed),
+-	gene expression values (TPM) of CMs (precomputed),
+-	a file containing all available TF binding motifs as Position specific energy matrices (PSEMs),
+-	output file,
+-	a mapping from ensembl IDs to gene names and 
+-	TPM threshold value. If the expression value of a TF is higher than  the TPM threshold value, we consider this TF as expressed.
 
+As mentioned before, the RNA-seq data is taken from `An atlas of transcriptional, chromatin accessibility, and surface marker changes in human mesoderm development <https://www.nature.com/articles/sdata2016109#Sec20>`. We performed the quantificantion of the RNA-seq data using Salmon. 
 Please run the script using the following command:
 
 ::
@@ -39,9 +43,6 @@ Before we can perform the intersection step, we first have to preprocess the foo
 ::
 
   awk '{print $1 "\t" $2 "\t" $3 "\t" $4 "\t" $5}' results/session1/hint/footprints/hESC.bed  > results/session2/footprints_hESC.bed
-and 
-::
- 
   awk '{print $1 "\t" $2 "\t" $3 "\t" $4 "\t" $5}' results/session1/hint/footprints/Cardiac.bed  > results/session2/footprints_CM.bed
   
 To intersect the footprint of the hESC and the cardiac mesoderms with the differentially ATAC-peaks, we use bedtools intersect command.
@@ -49,11 +50,6 @@ To intersect the footprint of the hESC and the cardiac mesoderms with the differ
 ::
 
   bedtools intersect -a  results/session2/footprints_hESC.bed -b data/nf_core_atacseq/macs/narrowPeak/consensus/deseq2/CardiacvshESC/CardiacvshESC.mRp.clN.deseq2.FDR0.05.results.bed  > results/session2/footprints_DiffPeaks_hESC.bed
-
-and
-
-::
-
   bedtools intersect -a  results/session2/footprints_CM.bed -b data/nf_core_atacseq/macs/narrowPeak/consensus/deseq2/CardiacvshESC/CardiacvshESC.mRp.clN.deseq2.FDR0.05.results.bed  > results/session2/footprints_DiffPeaks_CM.bed
 
 Since the footprints are rather short, we need to extend the region by some base pairs, such that all regions are longer than the longest TF binding motif (>21bp). This is necessary to probably compute the TF binding affinity per footprint region during the *DYNAMITE* analysis. Please run the following two commands:
@@ -61,11 +57,7 @@ Since the footprints are rather short, we need to extend the region by some base
 ::
 
   awk '{print $1 "\t" $2 -10 "\t" $3 +10 "\t" $4 "\t" $5}' results/session2/footprints_DiffPeaks_CM.bed  >results/session2/footprints_DiffPeaks_CM_extended.bed 
-  
-and 
-::
-
-  awk '{print $1 "\t" $2 -10 "\t" $3 +10 "\t" $4 "\t" $5}' results/session2/footprints_DiffPeaks_hESC.bed  >results/session2/footprints_DiffPeaks_hESC_extended.bed
+  awk '{print $1 "\t" $2 -10 "\t" $3 +10 "\t" $4 "\t" $5}' results/session2/footprints_DiffPeaks_hESC.bed >results/session2/footprints_DiffPeaks_hESC_extended.bed
 
 Step 3: Deriving candidate transcriptional regulators using *DYNAMITE*
 ----------------------------------------------------------------------
