@@ -19,6 +19,12 @@ You can use the following command: ::
 
   docker run -it -P --name epigenomics -v ~/container-data:/data sivarajank/epigenomics_tutorial:latest
 
+Command for Windows users: ::
+   
+   docker run -it -P --name epigenomics -v C:\Users\*username*\Documents\container-data:/data sivarajank/epigenomics_tutorial:latest
+   
+   Please do not forget to change your username. 
+   
 The *name* parameter assigns a name to your docker image. If you used the above command it is *epigenomics (--name)*. 
 If, for some reason, you exit or abort your docker image, you can use the following commands to re-login to the docker container. : ::
 
@@ -50,6 +56,10 @@ Now, you can find the folder EpigenomeAnalysisTutorial-2020 in your local machin
 ::
    cd EpigenomeAnalysisTutorial-2020
    
-TODO:
------
-ADD INFO about Windows commands and deleting the images and freeing up space
+How to remove all the containers and images **after the tutorial**
+----------------------------------------------------------------------
+
+If you want to remove **all** docker content from your system, you can run the following commands: ::
+
+   docker rm epigenomics
+   docker image prune -a
