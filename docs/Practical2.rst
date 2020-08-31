@@ -3,7 +3,7 @@ Practical II - Linking regions to genes and integration with gene expression dat
 ==================================================================
 
 In the last step of practical 1, we already identified enriched TFs, which overlap with the predicted footprint.  In this part, we are going to infer TFs that might be related to gene expression differences between hESC and cardiac mesoderms. Therefore, we first link the footprints to potential target genes using 
-`TEPIC <https://github.com/SchulzLab/TEPIC>`_, and then apply `DYNAMITE <https://github.com/SchulzLab/TEPIC/blob/master/MachineLearningPipelines/DYNAMITE/README.md>`, which uses a logistic regression classifier to identify key regulators, which might explain changes in gene expression. 
+`TEPIC <https://github.com/SchulzLab/TEPIC>`_, and then apply `DYNAMITE <https://github.com/SchulzLab/TEPIC/blob/master/MachineLearningPipelines/DYNAMITE/README.md>`_, which uses a logistic regression classifier to identify key regulators, which might explain changes in gene expression. 
 
 Step 1: Extracting TF motifs of TFs expressed in the cell types of interest
 ----------------------------------------------------
@@ -27,7 +27,8 @@ DYNAMITE requires as input a list of known TF binding motifs. In this step, we w
 -	a mapping from ensembl IDs to gene names and 
 -	TPM threshold value. If the expression value of a TF is higher than  the TPM threshold value, we consider this TF as expressed.
 
-As mentioned before, the RNA-seq data is taken from `An atlas of transcriptional, chromatin accessibility, and surface marker changes in human mesoderm development <https://www.nature.com/articles/sdata2016109#Sec20>`. We performed the quantificantion of the RNA-seq data using Salmon. 
+As mentioned before, the RNA-seq data is taken from
+`An atlas of transcriptional, chromatin accessibility, and surface marker changes in human mesoderm development <https://www.nature.com/articles/sdata2016109#Sec20>`_. We performed the quantificantion of the RNA-seq data using Salmon. 
 Please run the script using the following command:
 
 ::
