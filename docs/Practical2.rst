@@ -27,6 +27,8 @@ DYNAMITE requires as input a list of known TF binding motifs. In this step, we w
 -	a mapping from ensembl IDs to gene names and 
 -	TPM threshold value. If the expression value of a TF is higher than  the TPM threshold value, we consider this TF as expressed.
 
+All required input files are located in the data directory (/data/EpigenomeAnalysisTutorial-2020/data/) of the docker container.
+
 As mentioned before, the RNA-seq data is taken from
 `An atlas of transcriptional, chromatin accessibility, and surface marker changes in human mesoderm development <https://www.nature.com/articles/sdata2016109#Sec20>`_. We performed the quantificantion of the RNA-seq data using Salmon. 
 Please run the script using the following command:
@@ -34,6 +36,7 @@ Please run the script using the following command:
 ::
 
   python scripts/session2/extractPSEMsOfExpressedTFs.py data/meanTPM_hESC.txt  data/meanTPM_CM.txt  data/PSEM_JASPAR2020.txt results/session2/PSEMs_JASPAR2020_TPM_0.5.txt data/ensemblID_GeneName.txt 0.5
+
 
 Step 2: Intersect the footprint from HINT with differentially ATAC-peaks
 ----------------------------------------------------
@@ -47,7 +50,7 @@ Before we can perform the intersection step, we first have to extract the first 
   awk '{print $1 "\t" $2 "\t" $3 "\t" $4 "\t" $5}' results/session1/hint/footprints/hESC.bed  > results/session2/footprints_hESC.bed
   awk '{print $1 "\t" $2 "\t" $3 "\t" $4 "\t" $5}' results/session1/hint/footprints/Cardiac.bed  > results/session2/footprints_CM.bed
   
-To intersect the footprint of the hESC and the cardiac mesoderms with the differentially ATAC-peaks, we use bedtools intersect command.
+To intersect the footprint of the hESC and the cardiac mesoderms with the differentially ATAC-peaks, we use `bedtools intersect <https://bedtools.readthedocs.io/en/latest/content/tools/intersect.html>`_ command.
 
 ::
 
