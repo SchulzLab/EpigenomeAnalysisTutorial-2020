@@ -50,7 +50,7 @@ Before we can perform the intersection step, we first have to extract the first 
   awk '{print $1 "\t" $2 "\t" $3 "\t" $4 "\t" $5}' results/session1/hint/footprints/hESC.bed  > results/session2/footprints_hESC.bed
   awk '{print $1 "\t" $2 "\t" $3 "\t" $4 "\t" $5}' results/session1/hint/footprints/Cardiac.bed  > results/session2/footprints_CM.bed
   
-To intersect the footprint of the hESC and the cardiac mesoderms with the differentially ATAC-peaks, we use `bedtools intersect <https://bedtools.readthedocs.io/en/latest/content/tools/intersect.html>`_ command.
+To intersect the footprint of the hESC and the cardiac mesoderms with the differentially ATAC-peaks, we use `bedtools intersect <https://bedtools.readthedocs.io/en/latest/content/tools/intersect.html>`_ command. Two files are required as input. For each region in the first file (indicated by -a), an overlap with the second file (-b) is searched for.
 
 ::
 
