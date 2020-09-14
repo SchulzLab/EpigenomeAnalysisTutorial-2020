@@ -40,7 +40,7 @@ Step 2: Intersect the footprint from HINT with differentially ATAC-peaks
 
 As input regions for *DYNAMITE* we are going to use the footprint computed with *HINT*, which we intersect with the differential ATAC-peak. The remaining footprint are regions where we expect binding sites of key TFs and where we observe different chromatin accessibility between hESC and cardiac mesoderms. 
 
-Before we can perform the intersection step, we first have to preprocess the footprint. Please run 
+Before we can perform the intersection step, we first have to extract the first 5 columns of the footprint output file to create a file which can be handled by bedtools. Therefore we use awk. Please run 
 
 ::
 
